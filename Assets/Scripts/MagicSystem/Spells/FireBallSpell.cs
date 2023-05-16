@@ -27,7 +27,7 @@ public class FireBallSpell : MonoBehaviour
 
     private void Start()
     {
-        myRB.AddForce(Vector3.up* spellInfo.Speed * 4000 * Time.deltaTime, ForceMode.Impulse);
+        myRB.AddForce(Vector3.up * spellInfo.Speed * 4000 * Time.deltaTime, ForceMode.Impulse);
     }
     private void FixedUpdate()
     {

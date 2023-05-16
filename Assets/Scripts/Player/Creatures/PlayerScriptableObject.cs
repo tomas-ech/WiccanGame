@@ -21,7 +21,4 @@ public class PlayerScriptableObject : ScriptableObject
     public float Intellect;
     public float Spirit;
 
-
-
-
 }
