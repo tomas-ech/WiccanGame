@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     private PlayerStats playerStats;
+    private Animator playerAnimator;
 
     [Header("Movement Stats")]
     public float jumpForce;
@@ -30,16 +31,18 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerStats = GetComponent<PlayerStats>();
+        playerAnimator = GameObject.Find("PlayerModel").GetComponent<Animator>();
         rb3d = GetComponent<Rigidbody>();
         rb3d.freezeRotation = true;
 
         readyToJump = true;
-
     }
 
     private void Update()
     {
         MyInput();
+        PlayerMovementAnimations();
+        PlayerAbilitiesAnimation();
 
         if (isOnGround)
         {
@@ -117,6 +120,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Water"))
+        {
+            playerAnimator.SetBool("IsSwimming", true);
+        }
+
+        if (other.gameObject.CompareTag("Water") && verticalInput > 0)
+        {
+            playerAnimator.SetBool("FastSwim", true);
+        }
+        else if (other.gameObject.CompareTag("Water") && verticalInput == 0)
+        {
+            playerAnimator.SetBool("FastSwim", false);
+        }
+    }
+
     private void OnCollisionExit(Collision other)
     {
         //Evita doble saltos al salir de la collision con Ground
@@ -124,5 +144,75 @@ public class PlayerController : MonoBehaviour
         {
             isOnGround = false;
         }
+        if (other.gameObject.CompareTag("Water"))
+        {
+            playerAnimator.SetBool("IsSwimming", false);
+        }
+    }
+
+       private void PlayerMovementAnimations()
+    {
+        if (verticalInput > 0)
+        {
+            playerAnimator.SetBool("IsRunning", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("IsRunning", false);
+        }
+
+        if (horizontalInput > 0)
+        {
+            playerAnimator.SetBool("RightWalk", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("RightWalk", false);
+        }
+
+        if (horizontalInput < 0)
+        {
+            playerAnimator.SetBool("LeftWalk", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("LeftWalk", false);
+        }
+
+        if (isOnGround == false)
+        {
+            playerAnimator.SetBool("IsJumping", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("IsJumping", false);
+        }
+    }
+
+
+
+    private void PlayerAbilitiesAnimation()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            playerAnimator.SetBool("BombThrow", true);
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            playerAnimator.SetBool("BombThrow", false);
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            StartCoroutine(RockAttack());
+        }
+        
+    }
+
+    IEnumerator RockAttack()
+    {
+    playerAnimator.SetBool("Rocks", true);
+    yield return new WaitForSeconds(1);
+    playerAnimator.SetBool("Rocks", false);
     }
 }

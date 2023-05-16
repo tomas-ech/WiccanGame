@@ -8,6 +8,7 @@ TagManager:
   - LocationCard
   - Enemy
   - Ground
+  - Water
   layers:
   - Default
   - TransparentFX
