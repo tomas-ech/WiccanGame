@@ -43,16 +43,9 @@ public class PlayerController : MonoBehaviour
         MyInput();
         PlayerMovementAnimations();
         PlayerAbilitiesAnimation();
-
-        if (isOnGround)
-        {
-            rb3d.drag = groundDrag;
-        }
-        else{
-            rb3d.drag = 0;
-        }
-
         SpeedControl();
+        if (isOnGround) {rb3d.drag = groundDrag;}
+        else {rb3d.drag = 0;}
     }
 
     private void FixedUpdate()
@@ -79,15 +72,18 @@ public class PlayerController : MonoBehaviour
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        if (isOnGround)
+        if (isOnGround && (horizontalInput !=0 || verticalInput > 0))
         {
             rb3d.AddForce(moveDirection.normalized * playerStats.characterSpeed * 10f, ForceMode.Force);
+        }
+        else if (isOnGround && (horizontalInput !=0 || verticalInput < 0))
+        {
+            rb3d.AddForce(moveDirection.normalized * playerStats.characterSpeed/2 * 10f, ForceMode.Force);
         }
         else{
             rb3d.AddForce(moveDirection.normalized * airMultipliear *10f, ForceMode.Force);
         }
     }
-
     private void SpeedControl()
     {
         Vector3 flatVel = new Vector3(rb3d.velocity.x, 0f, rb3d.velocity.z);
@@ -105,12 +101,10 @@ public class PlayerController : MonoBehaviour
 
         rb3d.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
-
     private void ResetJump()
     {
         readyToJump = true;
     }
-
     private void OnCollisionEnter(Collision other)
     {
         //Permite al jugador saltar si esta en collision con el tag Ground
@@ -119,24 +113,6 @@ public class PlayerController : MonoBehaviour
             isOnGround = true;
         }
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Water"))
-        {
-            playerAnimator.SetBool("IsSwimming", true);
-        }
-
-        if (other.gameObject.CompareTag("Water") && verticalInput > 0)
-        {
-            playerAnimator.SetBool("FastSwim", true);
-        }
-        else if (other.gameObject.CompareTag("Water") && verticalInput == 0)
-        {
-            playerAnimator.SetBool("FastSwim", false);
-        }
-    }
-
     private void OnCollisionExit(Collision other)
     {
         //Evita doble saltos al salir de la collision con Ground
@@ -149,16 +125,35 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("IsSwimming", false);
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Water"))
+        {
+            playerAnimator.SetBool("IsSwimming", true);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Water"))
+        {
+            playerAnimator.SetBool("IsSwimming", false);
+        }
+    }
 
-       private void PlayerMovementAnimations()
+    private void PlayerMovementAnimations()
     {
         if (verticalInput > 0)
         {
             playerAnimator.SetBool("IsRunning", true);
         }
+        else if (verticalInput < 0)
+        {
+            playerAnimator.SetBool("WalkBack", true);
+        }
         else
         {
             playerAnimator.SetBool("IsRunning", false);
+            playerAnimator.SetBool("WalkBack", false);
         }
 
         if (horizontalInput > 0)
@@ -179,7 +174,7 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("LeftWalk", false);
         }
 
-        if (isOnGround == false)
+        if (isOnGround == false )
         {
             playerAnimator.SetBool("IsJumping", true);
         }
@@ -188,9 +183,6 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("IsJumping", false);
         }
     }
-
-
-
     private void PlayerAbilitiesAnimation()
     {
         if (Input.GetMouseButtonDown(0))
@@ -208,11 +200,12 @@ public class PlayerController : MonoBehaviour
         }
         
     }
-
     IEnumerator RockAttack()
     {
-    playerAnimator.SetBool("Rocks", true);
-    yield return new WaitForSeconds(1);
-    playerAnimator.SetBool("Rocks", false);
+        rb3d.constraints = RigidbodyConstraints.FreezePosition;
+        playerAnimator.SetBool("Rocks", true);
+        yield return new WaitForSeconds(2);
+        playerAnimator.SetBool("Rocks", false);
+        rb3d.constraints = ~RigidbodyConstraints.FreezePosition;
     }
 }
