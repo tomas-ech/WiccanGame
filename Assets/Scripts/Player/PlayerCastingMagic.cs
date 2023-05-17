@@ -36,7 +36,7 @@ public class PlayerCastingMagic : MonoBehaviour
         if (!castingMagic && hasEnoughMana1 && Input.GetMouseButtonDown(1))
         {
             castingMagic = true;
-            playerStats.characterCurrentMana -= spellToCast1.spellInfo.ManaCost;
+            playerStats.characterCurrentMana -= spellToCast2.spellInfo.ManaCost;
             StartCoroutine(castSpell2());
         }
 

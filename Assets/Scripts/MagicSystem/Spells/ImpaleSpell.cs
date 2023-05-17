@@ -5,6 +5,7 @@ using UnityEngine;
 public class ImpaleSpell : MonoBehaviour
 {
     public GameObject impaleHitFX;
+    public SpellScriptableObject spellInfo;
     public int maximumLenght;
     public float separation, spawnDelay, damageDelay, height, radius, force, yOffSet;
     public LayerMask layerMask;
@@ -88,16 +89,26 @@ public class ImpaleSpell : MonoBehaviour
             if (enemy != null)
             {
                 //We add a force upwards to the rigidbody
-                enemy.AddForce(Vector3.back * force, ForceMode.VelocityChange);
-
+                StartCoroutine(EnemyStun());
+                enemy.AddForce(Vector3.up * force, ForceMode.VelocityChange);
+                
                 //We create our impale fx hit
                 var fx = Instantiate(impaleHitFX, enemy.transform.position, Quaternion.identity);
 
                 //We destroy the fx on a delay depending on the duration of our fx
-                Destroy(fx, 1);
+                Destroy(fx, 2);
 
                 //You can also call your damaging script here
             }
+
+            IEnumerator EnemyStun()
+            {
+                enemy.constraints = RigidbodyConstraints.FreezeAll;
+                enemy.constraints = ~RigidbodyConstraints.FreezePositionY;
+                yield return new WaitForSeconds(2);
+                enemy.constraints = ~RigidbodyConstraints.FreezePosition;
+            }
         }
     }
+    
 }

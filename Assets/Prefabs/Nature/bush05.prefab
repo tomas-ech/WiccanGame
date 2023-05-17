@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6299542817712484711}
   - component: {fileID: 6299542817694293419}
   - component: {fileID: 6299542817695343735}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: bush05
-  m_TagString: Untagged
+  m_TagString: Nature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

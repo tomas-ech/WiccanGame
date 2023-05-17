@@ -8,10 +8,13 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private Image healthBar;
     [SerializeField] private Image manaBar;
+    private PlayerStats playerStats;
+
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI manaText;
-
-    private PlayerStats playerStats;
+    public GameObject playerUI;
+    public GameObject combatMap1;
+    public GameObject player;
 
     private void Start()
     {
@@ -39,6 +42,5 @@ public class UIManager : MonoBehaviour
         manaBar.fillAmount = mana / maxMana;
         manaText.text = mana.ToString("F0") + " / " + maxMana.ToString();
     }
-
     
 }

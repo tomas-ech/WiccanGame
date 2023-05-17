@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f98f9c6f59f7241bccef7b4324a629, type: 3}
   m_Name: RockImpaler
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Rock Impales
   Description: 
-  EarthMagic: 0
+  EarthMagic: 1
   WindMagic: 0
   WaterMagic: 0
   FireMagic: 0
-  DamageAmount: 10
-  ManaCost: 5
-  Lifetime: 2
-  Speed: 15
-  SpellRadius: 0.15
+  DamageAmount: 200
+  ManaCost: 150
+  Lifetime: 500
+  Speed: 40
+  SpellRadius: 1
   SpellRange: 20
