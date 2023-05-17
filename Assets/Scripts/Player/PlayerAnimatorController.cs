@@ -16,11 +16,11 @@ public class PlayerAnimatorController : MonoBehaviour
 
     void Update()
     {
-        PlayerMovementAnimations();
-        PlayerAbilitiesAnimation();
+        //PlayerMovementAnimations();
+        //PlayerAbilitiesAnimation();
     }
 
-    private void PlayerMovementAnimations()
+    /*private void PlayerMovementAnimations()
     {
         if (playerController.verticalInput > 0)
         {
@@ -57,9 +57,9 @@ public class PlayerAnimatorController : MonoBehaviour
         {
             playerAnimator.SetBool("IsJumping", false);
         }
-    }
+    }*/
 
-    private void PlayerAbilitiesAnimation()
+    /*private void PlayerAbilitiesAnimation()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -75,14 +75,14 @@ public class PlayerAnimatorController : MonoBehaviour
             StartCoroutine(RockAttack());
         }
         
-    }
+    }*/
 
-    IEnumerator RockAttack()
-{
-    playerAnimator.SetBool("Rocks", true);
-    yield return new WaitForSeconds(1);
-    playerAnimator.SetBool("Rocks", false);
-}
+    /*IEnumerator RockAttack()
+    {
+        playerAnimator.SetBool("Rocks", true);
+        yield return new WaitForSeconds(1);
+        playerAnimator.SetBool("Rocks", false);
+    }*/
 }
 
 

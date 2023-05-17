@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : FSM
 {
 
     private PlayerStats playerStats;
@@ -26,7 +26,10 @@ public class PlayerController : MonoBehaviour
     public float groundDrag;
     private bool readyToJump;
     [HideInInspector] public bool isOnGround = false;
-    
+
+    [Header("Animator")]
+    public Animator playerAnimator;
+
     void Start()
     {
         playerStats = GetComponent<PlayerStats>();
@@ -39,7 +42,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if(!isLocalPlayer) { return;  }
+
         MyInput();
+        PlayerMovementAnimations();
+        PlayerAbilitiesAnimation();
 
         if (isOnGround)
         {
@@ -54,6 +61,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!isLocalPlayer) { return; }
         MovePlayer();
     }
 
@@ -96,6 +104,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
     private void Jump()
     {
         rb3d.velocity = new Vector3(rb3d.velocity.x, 0f, rb3d.velocity.z);
@@ -124,5 +133,68 @@ public class PlayerController : MonoBehaviour
         {
             isOnGround = false;
         }
+    }
+
+    private void PlayerMovementAnimations()
+    {
+        if (verticalInput > 0)
+        {
+            playerAnimator.SetBool("IsRunning", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("IsRunning", false);
+        }
+
+        if (horizontalInput > 0)
+        {
+            playerAnimator.SetBool("RightWalk", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("RightWalk", false);
+        }
+
+        if (horizontalInput < 0)
+        {
+            playerAnimator.SetBool("LeftWalk", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("LeftWalk", false);
+        }
+
+        if (isOnGround == false)
+        {
+            playerAnimator.SetBool("IsJumping", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("IsJumping", false);
+        }
+    }
+
+    private void PlayerAbilitiesAnimation()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            playerAnimator.SetBool("BombThrow", true);
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            playerAnimator.SetBool("BombThrow", false);
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            StartCoroutine(RockAttack());
+        }
+    }
+
+    IEnumerator RockAttack()
+    {
+        playerAnimator.SetBool("Rocks", true);
+        yield return new WaitForSeconds(1);
+        playerAnimator.SetBool("Rocks", false);
     }
 }

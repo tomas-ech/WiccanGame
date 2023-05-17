@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
-public class PlayerCastingMagic : MonoBehaviour
+public class PlayerCastingMagic : FSM
 {
+
     [SerializeField] private FireBallSpell spellToCast1;
+    [SerializeField] private GameObject prefabSpellCast1;
     //[SerializeField] private Spell spellToCast2;
     //[SerializeField] private Spell spellToCast3;
     [SerializeField] private Transform castPoint;
@@ -24,38 +27,49 @@ public class PlayerCastingMagic : MonoBehaviour
     {
         bool hasEnoughMana1 = playerStats.characterCurrentMana - spellToCast1.spellInfo.ManaCost >= 0; 
 
-        if (!castingMagic && hasEnoughMana1 && Input.GetMouseButtonDown(0))
+        if(isLocalPlayer)
         {
-            castingMagic = true;
-            playerStats.characterCurrentMana -= spellToCast1.spellInfo.ManaCost;
-            currentCastTimer = 0;
-            StartCoroutine(castSpell1());
-        }
-
-        if (!castingMagic && hasEnoughMana1 && Input.GetMouseButtonDown(1))
-        {
-            castingMagic = true;
-            playerStats.characterCurrentMana -= spellToCast1.spellInfo.ManaCost;
-            //castSpell2();
-        }
-
-        if (castingMagic)
-        {
-            currentCastTimer += Time.deltaTime;
-
-            if (currentCastTimer > timeBetweenCast)
+            if (!castingMagic && hasEnoughMana1 && Input.GetMouseButtonDown(0))
             {
-                castingMagic = false;
+                castingMagic = true;
+                playerStats.characterCurrentMana -= spellToCast1.spellInfo.ManaCost;
+                currentCastTimer = 0;
+                //StartCoroutine(castSpell1());
+                CmdCastSpell1();
+            }
+
+            if (!castingMagic && hasEnoughMana1 && Input.GetMouseButtonDown(1))
+            {
+                castingMagic = true;
+                playerStats.characterCurrentMana -= spellToCast1.spellInfo.ManaCost;
+                //castSpell2();
+            }
+
+            if (castingMagic)
+            {
+                currentCastTimer += Time.deltaTime;
+
+                if (currentCastTimer > timeBetweenCast)
+                {
+                    castingMagic = false;
+                }
             }
         }
     }
 
-    IEnumerator castSpell1()
+    [Command]
+    void CmdCastSpell1()
+    {
+        GameObject projectile = Instantiate(prefabSpellCast1, castPoint.position, castPointRotator.rotation);
+        NetworkServer.Spawn(projectile);
+    }
+
+    /*IEnumerator castSpell1()
     {
         yield return new WaitForSeconds(0.5f);
         Instantiate(spellToCast1, castPoint.position, castPointRotator.rotation);
 
-    }
+    }*/
 
     /*void castSpell1()
     {
