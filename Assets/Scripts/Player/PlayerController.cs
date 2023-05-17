@@ -33,8 +33,8 @@ public class PlayerController : MonoBehaviour
         playerStats = GetComponent<PlayerStats>();
         playerAnimator = GameObject.Find("PlayerModel").GetComponent<Animator>();
         rb3d = GetComponent<Rigidbody>();
+        
         rb3d.freezeRotation = true;
-
         readyToJump = true;
     }
 
@@ -44,8 +44,6 @@ public class PlayerController : MonoBehaviour
         PlayerMovementAnimations();
         PlayerAbilitiesAnimation();
         SpeedControl();
-        if (isOnGround) {rb3d.drag = groundDrag;}
-        else {rb3d.drag = 0;}
     }
 
     private void FixedUpdate()
@@ -60,13 +58,6 @@ public class PlayerController : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         playerModel.transform.rotation = orientation.transform.rotation;
-
-        if (Input.GetKey(jumpKey) && readyToJump && isOnGround)
-        {
-            readyToJump = false;
-            Jump();
-            Invoke(nameof(ResetJump), jumpCD);
-        }
     }
     private void MovePlayer()
     {
@@ -83,6 +74,13 @@ public class PlayerController : MonoBehaviour
         else{
             rb3d.AddForce(moveDirection.normalized * airMultipliear *10f, ForceMode.Force);
         }
+
+        if (Input.GetKey(jumpKey) && readyToJump && isOnGround)
+        {
+            readyToJump = false;
+            Jump();
+            Invoke(nameof(ResetJump), jumpCD);
+        }
     }
     private void SpeedControl()
     {
@@ -94,6 +92,8 @@ public class PlayerController : MonoBehaviour
             rb3d.velocity = new Vector3(limitedVel.x, rb3d.velocity.y, limitedVel.z);
         }
 
+        if (isOnGround) {rb3d.drag = groundDrag;}
+        else {rb3d.drag = 0;}
     }
     private void Jump()
     {
@@ -142,6 +142,7 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerMovementAnimations()
     {
+        //Movimiento verticales
         if (verticalInput > 0)
         {
             playerAnimator.SetBool("IsRunning", true);
@@ -155,25 +156,21 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("IsRunning", false);
             playerAnimator.SetBool("WalkBack", false);
         }
-
+        //Movimientos horizontales
         if (horizontalInput > 0)
         {
             playerAnimator.SetBool("RightWalk", true);
         }
-        else
-        {
-            playerAnimator.SetBool("RightWalk", false);
-        }
-
-        if (horizontalInput < 0)
+        else if (horizontalInput < 0)
         {
             playerAnimator.SetBool("LeftWalk", true);
         }
         else
         {
+            playerAnimator.SetBool("RightWalk", false);
             playerAnimator.SetBool("LeftWalk", false);
         }
-
+        //Salto
         if (isOnGround == false )
         {
             playerAnimator.SetBool("IsJumping", true);
@@ -185,20 +182,10 @@ public class PlayerController : MonoBehaviour
     }
     private void PlayerAbilitiesAnimation()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            playerAnimator.SetBool("BombThrow", true);
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            playerAnimator.SetBool("BombThrow", false);
-        }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            StartCoroutine(RockAttack());
-        }
-        
+        //Primary Attack
+        if (Input.GetMouseButtonDown(0)) {StartCoroutine(BombAttack());}
+        //Secundary Attack
+        if (Input.GetMouseButtonDown(1)) {StartCoroutine(RockAttack());}
     }
     IEnumerator RockAttack()
     {
@@ -206,6 +193,14 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetBool("Rocks", true);
         yield return new WaitForSeconds(2);
         playerAnimator.SetBool("Rocks", false);
+        rb3d.constraints = ~RigidbodyConstraints.FreezePosition;
+    }
+    IEnumerator BombAttack()
+    {
+        rb3d.constraints = RigidbodyConstraints.FreezePosition;
+        playerAnimator.SetBool("BombThrow", true);
+        yield return new WaitForSeconds(1);
+        playerAnimator.SetBool("BombThrow", false);
         rb3d.constraints = ~RigidbodyConstraints.FreezePosition;
     }
 }

@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerCastingMagic : MonoBehaviour
 {
     [SerializeField] private FireBallSpell spellToCast1;
-    //[SerializeField] private Spell spellToCast2;
+    [SerializeField] private ImpaleSpell spellToCast2;
     //[SerializeField] private Spell spellToCast3;
     [SerializeField] private Transform castPoint;
+    [SerializeField] private Transform groundPoint;
     [SerializeField] private Transform castPointRotator;
     [SerializeField] private float timeBetweenCast = 0.25f;
     private float currentCastTimer;
@@ -36,7 +37,7 @@ public class PlayerCastingMagic : MonoBehaviour
         {
             castingMagic = true;
             playerStats.characterCurrentMana -= spellToCast1.spellInfo.ManaCost;
-            //castSpell2();
+            StartCoroutine(castSpell2());
         }
 
         if (castingMagic)
@@ -56,11 +57,13 @@ public class PlayerCastingMagic : MonoBehaviour
         Instantiate(spellToCast1, castPoint.position, castPointRotator.rotation);
 
     }
-
-    /*void castSpell1()
+    IEnumerator castSpell2()
     {
-        Instantiate(spellToCast1, castPoint.position, castPointRotator.rotation);
-    }*/
+        yield return new WaitForSeconds(1.5f);
+        Instantiate(spellToCast2, groundPoint.position, castPointRotator.rotation);
+    }
+
+    
 
     /*void castSpell2()
     {

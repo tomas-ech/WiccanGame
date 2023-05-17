@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ImpaleSpell : MonoBehaviour
 {
-    public GameObject impaleObj;
     public GameObject impaleHitFX;
     public int maximumLenght;
     public float separation, spawnDelay, damageDelay, height, radius, force, yOffSet;
@@ -55,7 +54,7 @@ public class ImpaleSpell : MonoBehaviour
                     var spawnLoc = hit.point;
                     spawnLoc.y += yOffSet;
                     hasSpawnedNext = true;
-                    var obj = Instantiate(impaleObj, transform);
+                    var obj = Instantiate(gameObject, transform);
                     obj.transform.position = spawnLoc;
                     obj.transform.rotation = transform.rotation;
                     var impale = obj.GetComponent<ImpaleSpell>();
@@ -89,13 +88,13 @@ public class ImpaleSpell : MonoBehaviour
             if (enemy != null)
             {
                 //We add a force upwards to the rigidbody
-                enemy.AddForce(Vector3.up * force, ForceMode.VelocityChange);
+                enemy.AddForce(Vector3.back * force, ForceMode.VelocityChange);
 
                 //We create our impale fx hit
                 var fx = Instantiate(impaleHitFX, enemy.transform.position, Quaternion.identity);
 
                 //We destroy the fx on a delay depending on the duration of our fx
-                Destroy(fx, 2);
+                Destroy(fx, 1);
 
                 //You can also call your damaging script here
             }

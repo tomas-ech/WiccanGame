@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 9137548622410759399}
   - component: {fileID: 7368615115441245553}
   - component: {fileID: -154643388976544581}
-  - component: {fileID: -4145277353457789266}
-  - component: {fileID: -4724060100552039824}
+  - component: {fileID: -7284631101593122469}
   m_Layer: 0
   m_Name: FireballSpell 1
   m_TagString: Untagged
@@ -65,7 +64,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-4145277353457789266
+--- !u!114 &-7284631101593122469
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,23 +73,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1229109557672444813}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0360cdbb126008d4ab3317a4fd4ded1f, type: 3}
+  m_Script: {fileID: 11500000, guid: 05f78e6091feaa64da93f1262e70c252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellInfo: {fileID: 11400000, guid: 2250e84b4d26d0d49b645d5c195cc3ce, type: 2}
---- !u!114 &-4724060100552039824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1229109557672444813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e4e16af42e3de24f941c0e6bf4ec717, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireballSpell: {fileID: -4145277353457789266}
+  impaleHitFX: {fileID: 1229109557672444813}
+  maximumLenght: 0
+  separation: 0
+  spawnDelay: 0
+  damageDelay: 0
+  height: 0
+  radius: 0
+  force: 0
+  yOffSet: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  fxParent: {fileID: 0}
+  currentLenght: 0
 --- !u!1 &5235705557563019781
 GameObject:
   m_ObjectHideFlags: 0
