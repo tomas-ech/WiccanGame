@@ -60,8 +60,9 @@ public class PlayerCastingMagic : FSM
     [Command]
     void CmdCastSpell1()
     {
-        GameObject projectile = Instantiate(prefabSpellCast1, castPoint.position, castPointRotator.rotation);
-        NetworkServer.Spawn(projectile);
+        GameObject projectile = (GameObject)Instantiate(prefabSpellCast1, castPoint.position, castPointRotator.rotation);
+        GameObject owner = this.gameObject;
+        NetworkServer.Spawn(projectile, owner);
     }
 
     /*IEnumerator castSpell1()
