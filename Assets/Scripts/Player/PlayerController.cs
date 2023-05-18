@@ -30,6 +30,8 @@ public class PlayerController : FSM
     [Header("Animator")]
     public Animator playerAnimator;
 
+    public GameObject playerCamera;
+
     void Start()
     {
         playerStats = GetComponent<PlayerStats>();
@@ -38,6 +40,10 @@ public class PlayerController : FSM
 
         readyToJump = true;
 
+        if(!isLocalPlayer)
+        {
+            playerCamera.gameObject.SetActive(false);
+        }
     }
 
     private void Update()

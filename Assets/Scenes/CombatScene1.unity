@@ -560,7 +560,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &610603774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2158,6 +2158,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ImpaleObj
       objectReference: {fileID: 0}
+    - target: {fileID: 5505345720049277776, guid: 5279ad47bc7c5d34a845d3db0d716067,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5505345720049277780, guid: 5279ad47bc7c5d34a845d3db0d716067,
         type: 3}
       propertyPath: separation
@@ -3126,7 +3131,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2037546396
 MonoBehaviour:
   m_ObjectHideFlags: 0
