@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI manaText;
 
 
-    private void Start()
+    private void OnEnable()
     {
         playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
     }
@@ -26,7 +26,6 @@ public class UIManager : MonoBehaviour
 
         //Barra de mana
         UpdateManabar(playerStats.characterMaxMana, playerStats.characterCurrentMana);
-
     }
 
     public void UpdateHealthbar(float maxHealth, float health)

@@ -639,10 +639,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc37264d83a335047a3acefdbf288a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellToCast1: {fileID: -4724060100552039824, guid: 70749a7fcb9988f4bb1240cf7d627040,
+  spellToCast1: {fileID: 1229109557672444813, guid: 70749a7fcb9988f4bb1240cf7d627040,
     type: 3}
-  spellToCast2: {fileID: 3150382708309061459, guid: 55b0e009075cc9944b4462c8d6a95de4,
+  spellInfo1: {fileID: 11400000, guid: 2250e84b4d26d0d49b645d5c195cc3ce, type: 2}
+  spellToCast2: {fileID: 3150382708309061463, guid: 55b0e009075cc9944b4462c8d6a95de4,
     type: 3}
+  spellInfo2: {fileID: 11400000, guid: ad8398cbc3c507b4aaf9c78a7f8369bd, type: 2}
   castPoint: {fileID: 6078839908506705037}
   groundPoint: {fileID: 6078839909861780635}
   castPointRotator: {fileID: 6078839910278465393}

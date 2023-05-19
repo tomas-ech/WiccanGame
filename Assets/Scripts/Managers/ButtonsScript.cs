@@ -17,7 +17,7 @@ public class ButtonsScript : MonoBehaviour
 
     private void Start()
     {
-        spawnMatch = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        //spawnMatch = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
     }
     public void PlayTheGame()
     {
