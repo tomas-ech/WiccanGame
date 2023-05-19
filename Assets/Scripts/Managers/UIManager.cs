@@ -12,13 +12,11 @@ public class UIManager : MonoBehaviour
 
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI manaText;
-    public GameObject playerUI;
-    public GameObject combatMap1;
-    public GameObject player;
+
 
     private void Start()
     {
-        playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
     }
 
     private void Update()

@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
+    [HideInInspector] public GameObject referenceObj;
+    private SpawnManager spawnManager;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -18,6 +20,8 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
             GameObject dropped = eventData.pointerDrag;
             Drag draggableItem = dropped.GetComponent<Drag>();
             draggableItem.parentAfterDrag = transform;
+            referenceObj = draggableItem.reference;
+            Debug.Log(referenceObj);
         }
         
     }

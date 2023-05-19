@@ -10,6 +10,7 @@ TagManager:
   - Ground
   - Water
   - Nature
+  - Lava
   layers:
   - Default
   - TransparentFX

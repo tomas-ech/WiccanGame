@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler 
 {
     public Image image;
+    public GameObject reference;
+
     [HideInInspector] public Transform parentAfterDrag;
 
     public void OnBeginDrag(PointerEventData eventData)
