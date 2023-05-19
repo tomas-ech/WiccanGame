@@ -96,7 +96,7 @@ public class ImpaleSpell : MonoBehaviour
                 var fx = Instantiate(impaleHitFX, enemy.transform.position, Quaternion.identity);
 
                 //We destroy the fx on a delay depending on the duration of our fx
-                Destroy(fx, 2);
+                Destroy(fx, 1);
 
                 //You can also call your damaging script here
             }

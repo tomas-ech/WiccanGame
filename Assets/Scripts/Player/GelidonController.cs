@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class GelidonController : MonoBehaviour
 {
 
     private PlayerStats playerStats;
-    private Animator playerAnimator;
+    [SerializeField] private Animator playerAnimator;
 
     [Header("Movement Stats")]
     public float jumpForce;
@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerStats = GetComponent<PlayerStats>();
-        playerAnimator = GameObject.Find("PlayerModel").GetComponent<Animator>();
         rb3d = GetComponent<Rigidbody>();
         
         rb3d.freezeRotation = true;
@@ -177,7 +176,7 @@ public class PlayerController : MonoBehaviour
     private void PlayerAbilitiesAnimation()
     {
         //Primary Attack
-        if (Input.GetMouseButtonDown(0)) {StartCoroutine(BombAttack());}
+        if (Input.GetMouseButtonDown(0)) {StartCoroutine(PunchAttack());}
         //Secundary Attack
         if (Input.GetMouseButtonDown(1)) {StartCoroutine(RockAttack());}
     }
@@ -196,11 +195,11 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetBool("Rocks", false);
         rb3d.constraints = ~RigidbodyConstraints.FreezePosition;
     }
-    IEnumerator BombAttack()
+    IEnumerator PunchAttack()
     {
         rb3d.constraints = RigidbodyConstraints.FreezePosition;
         playerAnimator.SetBool("BombThrow", true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         playerAnimator.SetBool("BombThrow", false);
         rb3d.constraints = ~RigidbodyConstraints.FreezePosition;
     }

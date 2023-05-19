@@ -135,7 +135,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4934003909612764589}
   m_LocalRotation: {x: -0.11199611, y: 0.00000001709813, z: -0.0000000019270476, w: 0.99370867}
-  m_LocalPosition: {x: 0, y: 5, z: -6.0000005}
+  m_LocalPosition: {x: 0, y: 5, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -511,9 +511,9 @@ GameObject:
   - component: {fileID: 4934003910859697638}
   - component: {fileID: 4934003910859697641}
   - component: {fileID: 4934003910859697642}
-  - component: {fileID: 4934003910859697643}
-  - component: {fileID: 4934003910859697636}
   - component: {fileID: 4934003910859697637}
+  - component: {fileID: 9191046148764286249}
+  - component: {fileID: 3527503322969310863}
   m_Layer: 0
   m_Name: Gelidon
   m_TagString: Player
@@ -570,50 +570,6 @@ CapsuleCollider:
   m_Height: 4.0228
   m_Direction: 1
   m_Center: {x: -0.08351517, y: -0.2958343, z: 0}
---- !u!114 &4934003910859697643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4934003910859697634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9aaa25aa42a467149a56dfd234d2d13d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 300
-  jumpCD: 1
-  horizontalInput: 0
-  verticalInput: 0
-  orientation: {fileID: 4934003910212325351}
-  playerModel: {fileID: 6121015535686113173}
-  modelView: {fileID: 4934003910131246093}
-  jumpKey: 32
-  groundDrag: 4
-  isOnGround: 0
---- !u!114 &4934003910859697636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4934003910859697634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc37264d83a335047a3acefdbf288a5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spellToCast1: {fileID: 1229109557672444813, guid: 70749a7fcb9988f4bb1240cf7d627040,
-    type: 3}
-  spellInfo1: {fileID: 11400000, guid: 2250e84b4d26d0d49b645d5c195cc3ce, type: 2}
-  spellToCast2: {fileID: 3150382708309061463, guid: 55b0e009075cc9944b4462c8d6a95de4,
-    type: 3}
-  spellInfo2: {fileID: 11400000, guid: ad8398cbc3c507b4aaf9c78a7f8369bd, type: 2}
-  castPoint: {fileID: 4934003910924243995}
-  groundPoint: {fileID: 4934003910131246093}
-  castPointRotator: {fileID: 4934003910212325351}
-  timeBetweenCast: 1
 --- !u!114 &4934003910859697637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,7 +582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3496af8e2b58343b3537251d526035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterStats: {fileID: 11400000, guid: 5755840bfac6b55409aaaacf7332f27e, type: 2}
+  characterStats: {fileID: 11400000, guid: cd3c38a31b735a24184fadc3470443f3, type: 2}
   characterMaxHealth: 0
   characterCurrentHealth: 0
   characterMaxMana: 0
@@ -636,6 +592,51 @@ MonoBehaviour:
   timeToRechargeMana: 5
   currentManaRechargeTimer: 0
   playerIsDead: 0
+--- !u!114 &9191046148764286249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4934003910859697634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 279e51763d37b0e44bc20ca1f13ca612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellToCast1: {fileID: 1229109557672444813, guid: 7ec0dce3d52c84c458403019053b8aa4,
+    type: 3}
+  spellInfo1: {fileID: 11400000, guid: 4a92725512aa22c4ea76afd32494afaf, type: 2}
+  spellToCast2: {fileID: 3150382708309061463, guid: 55b0e009075cc9944b4462c8d6a95de4,
+    type: 3}
+  spellInfo2: {fileID: 11400000, guid: ad8398cbc3c507b4aaf9c78a7f8369bd, type: 2}
+  castPoint: {fileID: 4934003910924243995}
+  groundPoint: {fileID: 4934003910131246093}
+  castPointRotator: {fileID: 4934003910212325351}
+  timeBetweenCast: 1
+--- !u!114 &3527503322969310863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4934003910859697634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ddd2301662cda4988e7fb46ba9d887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 673793141764675413}
+  jumpForce: 300
+  jumpCD: 1
+  horizontalInput: 0
+  verticalInput: 0
+  orientation: {fileID: 4934003910212325351}
+  playerModel: {fileID: 6121015535686113173}
+  modelView: {fileID: 4934003910131246093}
+  jumpKey: 32
+  groundDrag: 4
+  isOnGround: 0
 --- !u!1 &4934003910924243988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1032,7 +1033,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7702636786598756801}
   m_LocalRotation: {x: 0.1043417, y: -0, z: -0, w: 0.9945415}
-  m_LocalPosition: {x: -3.3063736, y: -10.0301, z: 5.486276}
+  m_LocalPosition: {x: -3.3063736, y: -10.0301, z: 5.4862766}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1309,6 +1310,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad7da18187e9c1f42987ef5e813e4479, type: 3}
+--- !u!95 &673793141764675413 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: ad7da18187e9c1f42987ef5e813e4479,
+    type: 3}
+  m_PrefabInstance: {fileID: 6355527828623780548}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6121015535686113173 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ad7da18187e9c1f42987ef5e813e4479,

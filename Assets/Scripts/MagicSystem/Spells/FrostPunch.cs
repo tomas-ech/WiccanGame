@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBallSpell : MonoBehaviour
+public class FrostPunch : MonoBehaviour
 {
     public SpellScriptableObject spellInfo;
 
@@ -24,14 +24,8 @@ public class FireBallSpell : MonoBehaviour
         
     }
 
-    private void Start()
-    {
-        myRB.AddForce(Vector3.up * spellInfo.Speed * 4000 * Time.deltaTime, ForceMode.Impulse);
-    }
     private void FixedUpdate()
     {
-     
-        myRB.AddForce(Physics.gravity * myRB.mass * 10);
 
         if (spellInfo.Speed > 0)
         {
@@ -55,7 +49,7 @@ public class FireBallSpell : MonoBehaviour
         {
             PlayerStats healthComponent = other.GetComponent<PlayerStats>();
             healthComponent.characterCurrentHealth -= spellInfo.DamageAmount;   
-            Debug.Log("Golpeado con Fuego!");
+            Debug.Log("Golpeado con Hielo!");
         }
 
         Destroy(this.gameObject);

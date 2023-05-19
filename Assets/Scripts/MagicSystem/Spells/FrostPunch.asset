@@ -9,20 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c3d62614e028b94ebe58de28671bb7f, type: 3}
-  m_Name: Warrok
+  m_Script: {fileID: 11500000, guid: 31f98f9c6f59f7241bccef7b4324a629, type: 3}
+  m_Name: FrostPunch
   m_EditorClassIdentifier: 
-  Name: Warrok
-  Description: Guardian del bosque
-  Clan: Verde
-  EarthMagic: 1
+  Name: FrostPunch
+  Description: Golpe elemental
+  EarthMagic: 0
   WindMagic: 1
-  WaterMagic: 0
+  WaterMagic: 1
   FireMagic: 0
-  Speed: 250
-  Health: 3000
-  Mana: 800
-  Strength: 100
-  Agility: 100
-  Intellect: 100
-  Spirit: 100
+  DamageAmount: 30
+  ManaCost: 20
+  Lifetime: 2
+  Speed: 15
+  SpellRadius: 0.15
+  SpellRange: 20

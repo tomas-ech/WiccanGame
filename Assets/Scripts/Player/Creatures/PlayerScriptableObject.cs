@@ -13,12 +13,12 @@ public class PlayerScriptableObject : ScriptableObject
     public bool WindMagic;
     public bool WaterMagic;
     public bool FireMagic;
-    public float Speed = 400f;
+    public float Speed = 200f;
     public float Health = 1000f;
     public float Mana = 1000f;
-    public float Strength;
-    public float Agility;
-    public float Intellect;
-    public float Spirit;
+    public float Strength = 100;
+    public float Agility = 100;
+    public float Intellect = 100;
+    public float Spirit = 100;
 
 }

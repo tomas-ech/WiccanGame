@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCastingMagic : MonoBehaviour
+public class GelidonAbilities : MonoBehaviour
 {
-    [SerializeField] private GameObject spellToCast1;
+  [SerializeField] private GameObject spellToCast1;
     [SerializeField] private SpellScriptableObject spellInfo1;
     [SerializeField] private GameObject spellToCast2;
     [SerializeField] private SpellScriptableObject spellInfo2;
     [SerializeField] private Transform castPoint;
     [SerializeField] private Transform groundPoint;
     [SerializeField] private Transform castPointRotator;
-    [SerializeField] private float timeBetweenCast = 0.25f;
+    [SerializeField] private float timeBetweenCast = 1f;
     private float currentCastTimer;
     private bool castingMagic;
     private PlayerStats playerStats;
@@ -57,7 +57,13 @@ public class PlayerCastingMagic : MonoBehaviour
     IEnumerator castSpell1()
     {
         yield return new WaitForSeconds(0.5f);
-        Instantiate(spellToCast1, castPoint.position, castPointRotator.rotation);
+        Instantiate(spellToCast1, castPoint.position + new Vector3(-1f, 0f, 0f), castPointRotator.rotation);
+        yield return new WaitForSeconds(0.3f);
+        Instantiate(spellToCast1, castPoint.position + new Vector3(1.5f, 0f, 0f), castPointRotator.rotation);
+        yield return new WaitForSeconds(0.3f);
+        Instantiate(spellToCast1, castPoint.position + new Vector3(-1f, 0f, 0f), castPointRotator.rotation);
+        yield return new WaitForSeconds(0.3f);
+        Instantiate(spellToCast1, castPoint.position + new Vector3(1.5f, 0f, 0f), castPointRotator.rotation);
 
     }
     IEnumerator castSpell2()
@@ -65,5 +71,4 @@ public class PlayerCastingMagic : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         Instantiate(spellToCast2, groundPoint.position, castPointRotator.rotation);
     }
-
 }
