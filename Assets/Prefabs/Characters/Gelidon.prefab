@@ -135,7 +135,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4934003909612764589}
   m_LocalRotation: {x: -0.11199611, y: 0.00000001709813, z: -0.0000000019270476, w: 0.99370867}
-  m_LocalPosition: {x: 0, y: 5, z: -6}
+  m_LocalPosition: {x: 0, y: 5, z: -6.0000005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -607,9 +607,9 @@ MonoBehaviour:
   spellToCast1: {fileID: 1229109557672444813, guid: 7ec0dce3d52c84c458403019053b8aa4,
     type: 3}
   spellInfo1: {fileID: 11400000, guid: 4a92725512aa22c4ea76afd32494afaf, type: 2}
-  spellToCast2: {fileID: 3150382708309061463, guid: 55b0e009075cc9944b4462c8d6a95de4,
+  spellToCast2: {fileID: 8862450882448406998, guid: 8c2ca0d173f60bb499dd0ff428771455,
     type: 3}
-  spellInfo2: {fileID: 11400000, guid: ad8398cbc3c507b4aaf9c78a7f8369bd, type: 2}
+  spellInfo2: {fileID: 11400000, guid: 7ede98fc16fd53d45992ca2f22127634, type: 2}
   castPoint: {fileID: 4934003910924243995}
   groundPoint: {fileID: 4934003910131246093}
   castPointRotator: {fileID: 4934003910212325351}
@@ -1033,7 +1033,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7702636786598756801}
   m_LocalRotation: {x: 0.1043417, y: -0, z: -0, w: 0.9945415}
-  m_LocalPosition: {x: -3.3063736, y: -10.0301, z: 5.4862766}
+  m_LocalPosition: {x: -3.3063736, y: -10.0301, z: 5.486276}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

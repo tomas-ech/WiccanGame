@@ -69,6 +69,6 @@ public class GelidonAbilities : MonoBehaviour
     IEnumerator castSpell2()
     {
         yield return new WaitForSeconds(1.5f);
-        Instantiate(spellToCast2, groundPoint.position, castPointRotator.rotation);
+        Instantiate(spellToCast2, groundPoint.position + new Vector3(0f, 10f, 10f), castPointRotator.rotation);
     }
 }
