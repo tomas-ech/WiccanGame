@@ -171,14 +171,11 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("LeftWalk", false);
         }
         //Salto
-        if (isOnGround == false )
+        if (Input.GetKey(jumpKey))
         {
-            playerAnimator.SetBool("IsJumping", true);
+            StartCoroutine(JumpAnimation());
         }
-        else
-        {
-            playerAnimator.SetBool("IsJumping", false);
-        }
+       
     }
     private void PlayerAbilitiesAnimation()
     {
@@ -186,6 +183,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) {StartCoroutine(BombAttack());}
         //Secundary Attack
         if (Input.GetMouseButtonDown(1)) {StartCoroutine(RockAttack());}
+    }
+
+    IEnumerator JumpAnimation()
+    {
+        playerAnimator.SetBool("IsJumping", true);
+        yield return new WaitForSeconds(1);
+        playerAnimator.SetBool("IsJumping", false);
     }
     IEnumerator RockAttack()
     {
