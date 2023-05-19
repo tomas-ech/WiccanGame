@@ -185,7 +185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69602807}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -130.3, y: 10.639999, z: -58.800003}
+  m_LocalPosition: {x: -41.99, y: 10.639999, z: -2.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2099,7 +2099,7 @@ MonoBehaviour:
   player1: {fileID: 6078839908576503156, guid: 69bba5db91d5082409c1cd14bb3560c9, type: 3}
   locationsArray:
   - {fileID: 5303809385821928878, guid: d46852d2fe6438c42816032348e08ed9, type: 3}
-  - {fileID: 6239359326963091636, guid: 8204c8f9fbccc9b4ab5ed664903408fa, type: 3}
+  - {fileID: 1663264339452394002, guid: 8204c8f9fbccc9b4ab5ed664903408fa, type: 3}
   spawnPointsSeasonMap:
   - {fileID: 726027501}
   - {fileID: 680879936}
