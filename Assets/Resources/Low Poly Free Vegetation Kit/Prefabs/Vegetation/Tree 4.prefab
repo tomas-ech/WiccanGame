@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7495939102546036740}
   - component: {fileID: 9165210690893652837}
   - component: {fileID: 8113416174430064956}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tree 4
-  m_TagString: Untagged
+  m_TagString: Nature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
