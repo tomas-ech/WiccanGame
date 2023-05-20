@@ -4,32 +4,55 @@ using UnityEngine;
 
 public class ButtonsScript : MonoBehaviour
 {
-    private SpawnManager spawnMatch;
+    [SerializeField] private GameObject[] characterArray;
+    private SpawnManager spawnManager;
     public GameObject UiManager;
     public GameObject playerUI;
-    //public GameObject combatMap1;
-    //public GameObject player;
+    public GameObject tutorialSelectCharacter;
     public GameObject boardCamera;
     //public GameObject mainCamera;
     public GameObject initialPage;
-    public GameObject spawnManager;
+    public GameObject spawnObj;
+
+
     
 
     private void Start()
     {
-        //spawnMatch = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
     }
     public void PlayTheGame()
     {
-        //spawnMatch.readyToPlay = true;
-        spawnManager.SetActive(true);
+        spawnManager.randomPlay = true;
         initialPage.SetActive(false);
-        //player.SetActive(true);
         UiManager.SetActive(true);
         playerUI.SetActive(true);
-        //combatMap1.SetActive(true);
         boardCamera.SetActive(false);
-        //mainCamera.SetActive(true);
-
     }
+
+    public void TutorialCharacter()
+    {
+        initialPage.SetActive(false);
+        tutorialSelectCharacter.SetActive(true);
+    }
+
+    public void CharacterSelected1()
+    {
+        tutorialSelectCharacter.SetActive(false);
+        UiManager.SetActive(true);
+        playerUI.SetActive(true);
+        boardCamera.SetActive(false);
+        spawnManager.tutorial1 = true;
+    }
+
+    public void CharacterSelected2()
+    {
+        tutorialSelectCharacter.SetActive(false);
+        UiManager.SetActive(true);
+        playerUI.SetActive(true);
+        boardCamera.SetActive(false);
+        spawnManager.tutorial2 = true;
+    }
+
+
 }

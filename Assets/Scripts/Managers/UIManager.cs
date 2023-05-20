@@ -9,18 +9,26 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image healthBar;
     [SerializeField] private Image manaBar;
     private PlayerStats playerStats;
-
+    
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI manaText;
+    public TextMeshProUGUI namePlayer;
 
 
-    private void OnEnable()
+    /*private void OnEnable()
     {
         playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
-    }
+    }*/
 
     private void Update()
     {
+        if (GameObject.FindWithTag("Player"))
+        {
+            playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
+        }
+
+        namePlayer.text = playerStats.characterStats.Name;
+
         //Barra de vida
         UpdateHealthbar(playerStats.characterMaxHealth, playerStats.characterCurrentHealth);
 
