@@ -69,7 +69,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9aebd705574f9e642aef1e5f59b3e4d8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4be46972f32ec514ca09358e02b24f0e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -92,7 +92,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 2190064647667732066}
-  character: {fileID: 0}
+  reference: {fileID: 6078839908576503156, guid: 69bba5db91d5082409c1cd14bb3560c9,
+    type: 3}
   parentAfterDrag: {fileID: 0}
 --- !u!114 &-7394446023954488197
 MonoBehaviour:
