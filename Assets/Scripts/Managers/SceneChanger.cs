@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour
 {
 
-    public void InitialScene()
+    /*public void InitialScene()
     {
         SceneManager.LoadScene("InitialScene");
     }
@@ -40,6 +40,6 @@ public class SceneChanger : MonoBehaviour
     public void CombatScene1()
     {
         SceneManager.LoadScene("CombatScene1");
-    }
+    }*/
 
 }

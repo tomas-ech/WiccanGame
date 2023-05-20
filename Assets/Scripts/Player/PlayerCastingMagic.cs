@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using Mirror;
 using UnityEngine;
+using Mirror;
 
-public class PlayerCastingMagic : FSM
+
+public class PlayerCastingMagic : NetworkBehaviour
 {
 
     [SerializeField] private FireBallSpell spellToCast1;

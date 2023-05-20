@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
+using UnityEngine.SceneManagement;
 
-public class PlayerController : FSM
+public class PlayerController : NetworkBehaviour
 {
 
     private PlayerStats playerStats;
@@ -13,14 +15,14 @@ public class PlayerController : FSM
     private float airMultipliear = 20;
     [HideInInspector] public float horizontalInput;
     [HideInInspector] public float verticalInput;
-    private Rigidbody rb3d;
+    public Rigidbody rb3d;
     private Vector3 moveDirection;
     public Transform orientation;
     public GameObject playerModel;
     public Transform modelView;
 
     [Header("KeyBinds")]
-    public KeyCode jumpKey = KeyCode.Space;
+    private KeyCode jumpKey = KeyCode.Space;
 
     [Header("Ground Check")]
     public float groundDrag;
@@ -30,19 +32,137 @@ public class PlayerController : FSM
     [Header("Animator")]
     public Animator playerAnimator;
 
+    [Header("Player Camera")]
     public GameObject playerCamera;
+
+    [Header("Player Network")]
+    public static PlayerController localPlayer;
+    [SyncVar] public string matchId;
+    private NetworkMatch networkMatch;
 
     void Start()
     {
+        networkMatch = GetComponent<NetworkMatch>();
         playerStats = GetComponent<PlayerStats>();
         rb3d = GetComponent<Rigidbody>();
         rb3d.freezeRotation = true;
 
         readyToJump = true;
 
-        if(!isLocalPlayer)
+        if (!isLocalPlayer)
         {
             playerCamera.gameObject.SetActive(false);
+            MainMenu.sharedInstance.SpawnPlayerUIPrefab(this);
+        }
+        else
+        {
+            localPlayer = this;
+        }
+    }
+
+    // HOST
+    public void HostGame()
+    {
+        string id = MainMenu.GetRandomId();
+        CmdHostGame(id);
+    }
+
+    [Command]
+    public void CmdHostGame(string id)
+    {
+        matchId = id;
+        if (MainMenu.sharedInstance.HostGame(id, gameObject))
+        {
+            Debug.Log("Lo que dijo el Ruso :)");
+            networkMatch.matchId = id.ToGuid();
+            TargetHostGame(true, id);
+        }
+        else
+        {
+            Debug.Log("Lo que dijo el Ruso x2 :(");
+            TargetHostGame(false, id);
+        }
+    }
+
+    [TargetRpc]
+    void TargetHostGame(bool success, string id)
+    {
+        matchId = id;
+        Debug.Log($"ID {matchId} == {id}");
+        MainMenu.sharedInstance.HostSuccess(success, id);
+    }
+
+    // JOIN
+    public void JoinGame(string inputId)
+    {
+        CmdJoinGame(inputId);
+    }
+
+    [Command]
+    public void CmdJoinGame(string id)
+    {
+        matchId = id;
+        if (MainMenu.sharedInstance.JoinGame(id, gameObject))
+        {
+            Debug.Log("Lo que dijo el Ruso x3 :)");
+            networkMatch.matchId = id.ToGuid();
+            TargetJoinGame(true, id);
+        }
+        else
+        {
+            Debug.Log("Lo que dijo el Ruso x4 :(");
+            TargetJoinGame(false, id);
+        }
+    }
+
+    [TargetRpc]
+    void TargetJoinGame(bool success, string id)
+    {
+        matchId = id;
+        Debug.Log($"ID {matchId} == {id}");
+        MainMenu.sharedInstance.JoinSuccess(success, id);
+    }
+
+    // BEGIN
+    public void BeginGame()
+    {
+        CmdBeginGame();
+    }
+
+    [Command]
+    public void CmdBeginGame()
+    {
+        MainMenu.sharedInstance.BeginGame(matchId);
+        Debug.Log("Creo que el ruso dijo que va comenzar");
+    }
+
+    public void StartGame()
+    {
+        TargetBeginGame();
+    }
+
+    [TargetRpc]
+    public void TargetBeginGame()
+    {
+        if(MainMenu.sharedInstance.inGame == false)
+        {
+            Debug.Log($"ID {matchId} == entro");
+            DontDestroyOnLoad(gameObject);
+            MainMenu.sharedInstance.inGame = true;
+            transform.localScale = new Vector3(1, 1, 1);
+            playerCamera.GetComponent<Camera>().enabled = true;
+            rb3d.isKinematic = false;
+            StartCoroutine(StartCombatScene());
+        }
+    }
+
+    public IEnumerator StartCombatScene()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
         }
     }
 
