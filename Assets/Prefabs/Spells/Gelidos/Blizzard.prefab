@@ -47,7 +47,7 @@ MonoBehaviour:
   flyingObject: {fileID: 3503942600865615090, guid: a81dc52dae4d1464d83d8ffb922f1be7,
     type: 3}
   amount: 30
-  destroyDelay: 5
+  destroyDelay: 2
   spawnInterval: 0.1
   spawnRadius: 5
   spawnForce: 2

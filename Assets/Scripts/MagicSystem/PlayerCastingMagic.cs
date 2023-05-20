@@ -11,15 +11,17 @@ public class PlayerCastingMagic : MonoBehaviour
     [SerializeField] private Transform castPoint;
     [SerializeField] private Transform groundPoint;
     [SerializeField] private Transform castPointRotator;
-    [SerializeField] private float timeBetweenCast = 0.25f;
+    [SerializeField] private float timeBetweenCast = 1f;
     private float currentCastTimer;
     private bool castingMagic;
     private PlayerStats playerStats;
+    private string characterName;
 
 
     void Start()
     {
-        playerStats = GetComponent<PlayerStats>();        
+        playerStats = GetComponent<PlayerStats>();   
+        characterName = playerStats.characterStats.Name;
     }
 
     void Update()
@@ -32,7 +34,9 @@ public class PlayerCastingMagic : MonoBehaviour
             castingMagic = true;
             playerStats.characterCurrentMana -= spellInfo1.ManaCost;
             currentCastTimer = 0;
-            StartCoroutine(castSpell1());
+
+            if(characterName == "Thazarian"){StartCoroutine(Thazarian1());}
+            if(characterName == "Gelidon"){StartCoroutine(Gelidon1());}
         }
 
         if (!castingMagic && hasEnoughMana2 && Input.GetMouseButtonDown(1))
@@ -40,7 +44,9 @@ public class PlayerCastingMagic : MonoBehaviour
             castingMagic = true;
             playerStats.characterCurrentMana -= spellInfo2.ManaCost;
             currentCastTimer = 0;
-            StartCoroutine(castSpell2());
+
+            if(characterName == "Thazarian"){StartCoroutine(Thazarian2());}
+            if(characterName == "Gelidon"){StartCoroutine(Gelidon2());}
         }
 
         if (castingMagic)
@@ -53,17 +59,32 @@ public class PlayerCastingMagic : MonoBehaviour
             }
         }
     }
-
-    IEnumerator castSpell1()
+    IEnumerator Thazarian1()
     {
         yield return new WaitForSeconds(0.5f);
         Instantiate(spellToCast1, castPoint.position, castPointRotator.rotation);
 
     }
-    IEnumerator castSpell2()
+    IEnumerator Thazarian2()
     {
         yield return new WaitForSeconds(1.5f);
         Instantiate(spellToCast2, groundPoint.position, castPointRotator.rotation);
     }
+    IEnumerator Gelidon1()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(spellToCast1, castPoint.position + new Vector3(-1f, 0f, 0f), castPointRotator.rotation);
+        yield return new WaitForSeconds(0.3f);
+        Instantiate(spellToCast1, castPoint.position + new Vector3(1.5f, 0f, 0f), castPointRotator.rotation);
+        yield return new WaitForSeconds(0.3f);
+        Instantiate(spellToCast1, castPoint.position + new Vector3(-1f, 0f, 0f), castPointRotator.rotation);
+        yield return new WaitForSeconds(0.3f);
+        Instantiate(spellToCast1, castPoint.position + new Vector3(1.5f, 0f, 0f), castPointRotator.rotation);
 
+    }
+    IEnumerator Gelidon2()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Instantiate(spellToCast2, groundPoint.position + new Vector3(0f, 10f, 10f), castPointRotator.rotation);
+    }
 }

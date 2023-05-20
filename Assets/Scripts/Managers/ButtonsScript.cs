@@ -9,7 +9,7 @@ public class ButtonsScript : MonoBehaviour
     public GameObject playerUI;
     //public GameObject combatMap1;
     //public GameObject player;
-    //public GameObject boardCamera;
+    public GameObject boardCamera;
     //public GameObject mainCamera;
     public GameObject initialPage;
     public GameObject spawnManager;
@@ -28,7 +28,7 @@ public class ButtonsScript : MonoBehaviour
         UiManager.SetActive(true);
         playerUI.SetActive(true);
         //combatMap1.SetActive(true);
-        //boardCamera.SetActive(false);
+        boardCamera.SetActive(false);
         //mainCamera.SetActive(true);
 
     }

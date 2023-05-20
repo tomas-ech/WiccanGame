@@ -617,6 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aaa25aa42a467149a56dfd234d2d13d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 6078839909803280989}
   jumpForce: 300
   jumpCD: 1
   horizontalInput: 0
@@ -3281,7 +3282,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8845132899018000724}
   - component: {fileID: 8845132899018000814}
-  - component: {fileID: 8845132899018000809}
   - component: {fileID: 8845132899018000808}
   - component: {fileID: 8845132899018000811}
   - component: {fileID: 8845132899018000810}
@@ -3350,14 +3350,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &8845132899018000809
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8845132899018000727}
-  m_Enabled: 1
 --- !u!114 &8845132899018000808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3487,9 +3479,9 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0

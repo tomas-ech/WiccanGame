@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField] private PlayerScriptableObject characterStats;
-
     [Header("Character Stats")]
+    public PlayerScriptableObject characterStats;
     public float characterMaxHealth;
     public float characterCurrentHealth;
     public float characterMaxMana;

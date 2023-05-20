@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour
 {
 
     private PlayerStats playerStats;
-    private Animator playerAnimator;
+    [SerializeField] private Animator playerAnimator;
+    private string characterName;
 
     [Header("Movement Stats")]
     public float jumpForce;
@@ -31,7 +32,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerStats = GetComponent<PlayerStats>();
-        playerAnimator = GameObject.Find("PlayerModel").GetComponent<Animator>();
+        characterName = playerStats.characterStats.name;
+        Debug.Log(characterName);
         rb3d = GetComponent<Rigidbody>();
         
         rb3d.freezeRotation = true;
@@ -176,10 +178,22 @@ public class PlayerController : MonoBehaviour
     }
     private void PlayerAbilitiesAnimation()
     {
-        //Primary Attack
-        if (Input.GetMouseButtonDown(0)) {StartCoroutine(BombAttack());}
-        //Secundary Attack
-        if (Input.GetMouseButtonDown(1)) {StartCoroutine(RockAttack());}
+        if (characterName == "Thazarian")
+        {
+            //Primary Attack
+            if (Input.GetMouseButtonDown(0)){StartCoroutine(BombAttack());}
+            //Secundary Attack
+            if (Input.GetMouseButtonDown(1)) {StartCoroutine(RockAttack());}
+        }
+
+        if (characterName == "Gelidon")
+        {
+            //Primary Attack
+            if (Input.GetMouseButtonDown(0)){StartCoroutine(PunchAttack());}
+            //Secundary Attack
+            if (Input.GetMouseButtonDown(1)) {StartCoroutine(BlizzardAttack());}
+        }
+        
     }
 
     IEnumerator JumpAnimation()
@@ -188,20 +202,44 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1);
         playerAnimator.SetBool("IsJumping", false);
     }
-    IEnumerator RockAttack()
-    {
-        rb3d.constraints = RigidbodyConstraints.FreezePosition;
-        playerAnimator.SetBool("Rocks", true);
-        yield return new WaitForSeconds(2);
-        playerAnimator.SetBool("Rocks", false);
-        rb3d.constraints = ~RigidbodyConstraints.FreezePosition;
-    }
+
+    //Primary Abilities
+    
     IEnumerator BombAttack()
     {
         rb3d.constraints = RigidbodyConstraints.FreezePosition;
-        playerAnimator.SetBool("BombThrow", true);
+        playerAnimator.SetBool("Attack1", true);
         yield return new WaitForSeconds(1);
-        playerAnimator.SetBool("BombThrow", false);
+        playerAnimator.SetBool("Attack1", false);
+        rb3d.constraints = ~RigidbodyConstraints.FreezePosition;
+    }
+
+    IEnumerator PunchAttack()
+    {
+        rb3d.constraints = RigidbodyConstraints.FreezePosition;
+        playerAnimator.SetBool("Attack1", true);
+        yield return new WaitForSeconds(1.5f);
+        playerAnimator.SetBool("Attack1", false);
+        rb3d.constraints = ~RigidbodyConstraints.FreezePosition;
+    }
+
+    //Secundary Abilities
+
+    IEnumerator RockAttack()
+    {
+        rb3d.constraints = RigidbodyConstraints.FreezePosition;
+        playerAnimator.SetBool("Attack2", true);
+        yield return new WaitForSeconds(2);
+        playerAnimator.SetBool("Attack2", false);
+        rb3d.constraints = ~RigidbodyConstraints.FreezePosition;
+    }
+
+    IEnumerator BlizzardAttack()
+    {
+        rb3d.constraints = RigidbodyConstraints.FreezePosition;
+        playerAnimator.SetBool("Attack2", true);
+        yield return new WaitForSeconds(2);
+        playerAnimator.SetBool("Attack2", false);
         rb3d.constraints = ~RigidbodyConstraints.FreezePosition;
     }
 }
