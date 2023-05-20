@@ -28,32 +28,34 @@ public class PlayerCastingMagic : NetworkBehaviour
     {
         bool hasEnoughMana1 = playerStats.characterCurrentMana - spellToCast1.spellInfo.ManaCost >= 0; 
 
-        if(isLocalPlayer)
+        if(!isLocalPlayer)
         {
-            if (!castingMagic && hasEnoughMana1 && Input.GetMouseButtonDown(0))
-            {
-                castingMagic = true;
-                playerStats.characterCurrentMana -= spellToCast1.spellInfo.ManaCost;
-                currentCastTimer = 0;
-                //StartCoroutine(castSpell1());
-                CmdCastSpell1();
-            }
+            return;
+        }
 
-            if (!castingMagic && hasEnoughMana1 && Input.GetMouseButtonDown(1))
-            {
-                castingMagic = true;
-                playerStats.characterCurrentMana -= spellToCast1.spellInfo.ManaCost;
-                //castSpell2();
-            }
+        if (!castingMagic && hasEnoughMana1 && Input.GetMouseButtonDown(0))
+        {
+            castingMagic = true;
+            playerStats.characterCurrentMana -= spellToCast1.spellInfo.ManaCost;
+            currentCastTimer = 0;
+            //StartCoroutine(castSpell1());
+            this.CmdCastSpell1();
+        }
 
-            if (castingMagic)
-            {
-                currentCastTimer += Time.deltaTime;
+        if (!castingMagic && hasEnoughMana1 && Input.GetMouseButtonDown(1))
+        {
+            castingMagic = true;
+            playerStats.characterCurrentMana -= spellToCast1.spellInfo.ManaCost;
+            //castSpell2();
+        }
 
-                if (currentCastTimer > timeBetweenCast)
-                {
-                    castingMagic = false;
-                }
+        if (castingMagic)
+        {
+            currentCastTimer += Time.deltaTime;
+
+            if (currentCastTimer > timeBetweenCast)
+            {
+                castingMagic = false;
             }
         }
     }
