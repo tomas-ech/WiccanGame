@@ -15,6 +15,7 @@ MonoBehaviour:
   Name: Gelidon
   Description: Mutante congelado
   Clan: Azul
+  spiritMagic: 1
   EarthMagic: 0
   WindMagic: 1
   WaterMagic: 1

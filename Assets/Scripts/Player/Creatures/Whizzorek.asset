@@ -15,10 +15,11 @@ MonoBehaviour:
   Name: Whizzorek
   Description: Angel Caido
   Clan: Amarillo
+  spiritMagic: 1
   EarthMagic: 0
-  WindMagic: 1
-  WaterMagic: 1
-  FireMagic: 0
+  WindMagic: 0
+  WaterMagic: 0
+  FireMagic: 1
   Speed: 220
   Health: 1500
   Mana: 3000

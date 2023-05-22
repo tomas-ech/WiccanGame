@@ -572,7 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3496af8e2b58343b3537251d526035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterStats: {fileID: 11400000, guid: 5755840bfac6b55409aaaacf7332f27e, type: 2}
+  characterStats: {fileID: 11400000, guid: edda9df14bc634545a9e31ebf978548b, type: 2}
   characterMaxHealth: 0
   characterCurrentHealth: 0
   characterMaxMana: 0

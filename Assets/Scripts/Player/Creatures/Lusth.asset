@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c3d62614e028b94ebe58de28671bb7f, type: 3}
-  m_Name: Warrok
+  m_Name: Lusth
   m_EditorClassIdentifier: 
-  Name: Warrok
-  Description: Guardian del bosque
-  Clan: Verde
+  Name: Lusth
+  Description: El asesino carmesi
+  Clan: Rojo
   spiritMagic: 1
-  EarthMagic: 1
+  EarthMagic: 0
   WindMagic: 1
   WaterMagic: 0
   FireMagic: 0
-  Speed: 250
-  Health: 3000
+  Speed: 225
+  Health: 2000
   Mana: 800
-  Strength: 100
-  Agility: 100
+  Strength: 200
+  Agility: 500
   Intellect: 100
   Spirit: 100
