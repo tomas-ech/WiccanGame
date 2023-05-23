@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Blizzard
   Description: Lluvia de hielo
   EarthMagic: 0
-  WindMagic: 1
+  WindMagic: 0
   WaterMagic: 1
   FireMagic: 0
   DamageAmount: 50

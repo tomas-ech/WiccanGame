@@ -57,6 +57,8 @@ public class FireBallSpell : MonoBehaviour
             healthComponent.characterCurrentHealth -= spellInfo.DamageAmount;   
             Debug.Log("Golpeado con Fuego!");
         }
+        
+        AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.explosionSound);
 
         Destroy(this.gameObject);
 

@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     private PlayerStats playerStats;
+    private PlayerCastingMagic playerCastingMagic;
     [SerializeField] private Animator playerAnimator;
     private string characterName;
 
@@ -32,8 +33,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerStats = GetComponent<PlayerStats>();
-        characterName = playerStats.characterStats.name;
-        Debug.Log(characterName);
+        characterName = playerStats.characterStats.Name;
+        playerCastingMagic = GetComponent<PlayerCastingMagic>();
         rb3d = GetComponent<Rigidbody>();
         
         rb3d.freezeRotation = true;
@@ -181,19 +182,18 @@ public class PlayerController : MonoBehaviour
         if (characterName == "Thazarian")
         {
             //Primary Attack
-            if (Input.GetMouseButtonDown(0)){StartCoroutine(BombAttack());}
+            if (Input.GetMouseButtonDown(0) && !playerCastingMagic.castingMagic1){StartCoroutine(BombAttack());}
             //Secundary Attack
-            if (Input.GetMouseButtonDown(1)) {StartCoroutine(RockAttack());}
+            if (Input.GetMouseButtonDown(1) && !playerCastingMagic.castingMagic2) {StartCoroutine(RockAttack());}
         }
 
         if (characterName == "Gelidon")
         {
             //Primary Attack
-            if (Input.GetMouseButtonDown(0)){StartCoroutine(PunchAttack());}
+            if (Input.GetMouseButtonDown(0) && !playerCastingMagic.castingMagic1){StartCoroutine(PunchAttack());}
             //Secundary Attack
-            if (Input.GetMouseButtonDown(1)) {StartCoroutine(BlizzardAttack());}
+            if (Input.GetMouseButtonDown(1) && !playerCastingMagic.castingMagic2) {StartCoroutine(BlizzardAttack());}
         }
-        
     }
 
     IEnumerator JumpAnimation()
@@ -204,7 +204,6 @@ public class PlayerController : MonoBehaviour
     }
 
     //Primary Abilities
-    
     IEnumerator BombAttack()
     {
         rb3d.constraints = RigidbodyConstraints.FreezePosition;
@@ -213,7 +212,6 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetBool("Attack1", false);
         rb3d.constraints = ~RigidbodyConstraints.FreezePosition;
     }
-
     IEnumerator PunchAttack()
     {
         rb3d.constraints = RigidbodyConstraints.FreezePosition;
@@ -224,7 +222,6 @@ public class PlayerController : MonoBehaviour
     }
 
     //Secundary Abilities
-
     IEnumerator RockAttack()
     {
         rb3d.constraints = RigidbodyConstraints.FreezePosition;
@@ -233,7 +230,6 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetBool("Attack2", false);
         rb3d.constraints = ~RigidbodyConstraints.FreezePosition;
     }
-
     IEnumerator BlizzardAttack()
     {
         rb3d.constraints = RigidbodyConstraints.FreezePosition;

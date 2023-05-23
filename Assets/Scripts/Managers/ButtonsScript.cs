@@ -23,6 +23,7 @@ public class ButtonsScript : MonoBehaviour
     }
     public void PlayTheGame()
     {
+        AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
         spawnManager.randomPlay = true;
         initialPage.SetActive(false);
         UiManager.SetActive(true);
@@ -32,6 +33,7 @@ public class ButtonsScript : MonoBehaviour
 
     public void TutorialCharacter()
     {
+        AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
         initialPage.SetActive(false);
         tutorialSelectCharacter.SetActive(true);
     }
@@ -43,6 +45,10 @@ public class ButtonsScript : MonoBehaviour
         playerUI.SetActive(true);
         boardCamera.SetActive(false);
         spawnManager.tutorial1 = true;
+        AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
+        AudioManager.Instance.canvasMusic.Stop();
+        AudioManager.Instance.canvasMusicSeasonMap.Play();
+        AudioManager.Instance.canvasMusicSeasonMap.volume = 0.3f;
     }
 
     public void CharacterSelected2()
@@ -52,6 +58,11 @@ public class ButtonsScript : MonoBehaviour
         playerUI.SetActive(true);
         boardCamera.SetActive(false);
         spawnManager.tutorial2 = true;
+        AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
+        AudioManager.Instance.canvasMusic.Stop();
+        AudioManager.Instance.canvasMusicSeasonMap.Play();
+        AudioManager.Instance.canvasMusicSeasonMap.volume = 0.3f;
+
     }
 
 

@@ -649,7 +649,12 @@ MonoBehaviour:
   castPoint: {fileID: 6078839908506705037}
   groundPoint: {fileID: 6078839909861780635}
   castPointRotator: {fileID: 6078839910278465393}
-  timeBetweenCast: 1
+  attack1CD: 1
+  attack2CD: 6
+  currentCastTimer1: 0
+  currentCastTimer2: 0
+  castingMagic1: 0
+  castingMagic2: 0
 --- !u!114 &6078839908576503155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3285,6 +3290,7 @@ GameObject:
   - component: {fileID: 8845132899018000808}
   - component: {fileID: 8845132899018000811}
   - component: {fileID: 8845132899018000810}
+  - component: {fileID: 7020734782876193992}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3436,6 +3442,14 @@ MonoBehaviour:
   rotationSpeed: 200
   currentStyle: 1
   combatLootAt: {fileID: 6078839908590193823}
+--- !u!81 &7020734782876193992
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8845132899018000727}
+  m_Enabled: 1
 --- !u!1 &8845132899351694369
 GameObject:
   m_ObjectHideFlags: 0

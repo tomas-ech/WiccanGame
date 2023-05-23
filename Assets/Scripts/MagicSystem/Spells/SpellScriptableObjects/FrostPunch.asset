@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: Golpe elemental
   EarthMagic: 0
   WindMagic: 1
-  WaterMagic: 1
+  WaterMagic: 0
   FireMagic: 0
   DamageAmount: 30
   ManaCost: 20
