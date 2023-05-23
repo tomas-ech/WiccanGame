@@ -33,9 +33,11 @@ public class PlayerStats : MonoBehaviour
     {
         StatsControl();
 
-        if (characterCurrentHealth <= 0)
+        if (characterCurrentHealth < 1)
         {
-            Destroy(gameObject);
+            Animator animator = GetComponentInChildren<Animator>();
+            animator.SetBool("Dead", true);
+            StartCoroutine(DestroyOnDead());
         }
     }
 
@@ -73,5 +75,11 @@ public class PlayerStats : MonoBehaviour
         {
             characterCurrentMana = 0;
         }
+    }
+
+    IEnumerator DestroyOnDead()
+    {
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
     }
 }

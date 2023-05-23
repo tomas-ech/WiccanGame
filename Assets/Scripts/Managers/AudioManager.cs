@@ -8,13 +8,13 @@ public class AudioManager : MonoBehaviour
     public AudioSource canvasMusic;
     public AudioSource canvasMusicSeasonMap;
     public AudioSource canvasMusicLavaMap;
+    public AudioSource walkingSound;
 
     [Header("UISoundFX")]
     public AudioClip buttonSound;
     public AudioClip seasonMapMusic;
 
     [Header("GameSoundFX")]
-    public AudioClip walkingSound;
     public AudioClip throwFire;
     public AudioClip explosionSound;
     public AudioClip  rockAttack;

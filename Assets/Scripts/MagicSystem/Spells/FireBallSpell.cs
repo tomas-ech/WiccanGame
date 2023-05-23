@@ -58,7 +58,10 @@ public class FireBallSpell : MonoBehaviour
         if (other.CompareTag("Enemy") || other.CompareTag("Player"))
         {
             PlayerStats healthComponent = other.GetComponent<PlayerStats>();
-            healthComponent.characterCurrentHealth -= spellInfo.DamageAmount;   
+            healthComponent.characterCurrentHealth -= spellInfo.DamageAmount; 
+            
+            StartCoroutine(GettingHit(other));
+
             Debug.Log("Golpeado con Fuego!");
         }
 
@@ -83,5 +86,13 @@ public class FireBallSpell : MonoBehaviour
             Destroy(gameObject);
         }
 
+    }
+
+    IEnumerator GettingHit(Collider other)
+    {
+        Animator animator = other.GetComponentInChildren<Animator>();
+        animator.SetBool("Hit", true);
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("Hit", false);
     }
 }

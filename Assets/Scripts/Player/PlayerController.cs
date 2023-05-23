@@ -149,6 +149,7 @@ public class PlayerController : MonoBehaviour
         if (verticalInput > 0)
         {
             playerAnimator.SetBool("IsRunning", true);
+            AudioManager.Instance.walkingSound.Play();
         }
         else if (verticalInput < 0)
         {
@@ -158,6 +159,7 @@ public class PlayerController : MonoBehaviour
         {
             playerAnimator.SetBool("IsRunning", false);
             playerAnimator.SetBool("WalkBack", false);
+            AudioManager.Instance.walkingSound.Stop();
         }
         //Movimientos horizontales
         if (horizontalInput > 0)
@@ -175,6 +177,9 @@ public class PlayerController : MonoBehaviour
         }
         //Salto
         if (Input.GetKey(jumpKey)) {StartCoroutine(JumpAnimation());}
+
+        //Muerte
+        //if (playerStats.characterCurrentHealth < 1) {playerAnimator.SetBool("Dead", true);}
        
     }
     private void PlayerAbilitiesAnimation()

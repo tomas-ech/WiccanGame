@@ -76,7 +76,7 @@ public class ButtonsScript : MonoBehaviour
         AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
         AudioManager.Instance.canvasMusic.Stop();
         AudioManager.Instance.canvasMusicSeasonMap.Play();
-        AudioManager.Instance.canvasMusicSeasonMap.volume = 0.3f;
+        AudioManager.Instance.canvasMusicSeasonMap.volume = 0.1f;
     }
 
     public void CharacterSelected2()
@@ -92,6 +92,6 @@ public class ButtonsScript : MonoBehaviour
         AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
         AudioManager.Instance.canvasMusic.Stop();
         AudioManager.Instance.canvasMusicSeasonMap.Play();
-        AudioManager.Instance.canvasMusicSeasonMap.volume = 0.3f;
+        AudioManager.Instance.canvasMusicSeasonMap.volume = 0.1f;
     }
 }
