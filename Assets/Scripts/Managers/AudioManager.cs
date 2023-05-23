@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip  rockAttack;
     public AudioClip windPunch;
     public AudioClip blizzard;
-    //public AudioClip
+    public AudioClip frostShardImpact;
     //public AudioClip
     //public AudioClip
 

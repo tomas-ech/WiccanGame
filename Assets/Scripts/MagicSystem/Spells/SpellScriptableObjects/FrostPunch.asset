@@ -20,7 +20,7 @@ MonoBehaviour:
   FireMagic: 0
   DamageAmount: 30
   ManaCost: 20
-  Lifetime: 2
+  Lifetime: 1.5
   Speed: 15
   SpellRadius: 0.15
   SpellRange: 20

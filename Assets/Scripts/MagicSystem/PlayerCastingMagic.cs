@@ -93,9 +93,9 @@ public class PlayerCastingMagic : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.windPunch);
-        Instantiate(spellToCast1, castPoint.position + new Vector3(-1f, 0f, 0f), castPointRotator.rotation);
+        Instantiate(spellToCast1, castPoint.position + new Vector3(-1f, 0f, 0f), groundPoint.rotation);
         yield return new WaitForSeconds(0.3f);
-        Instantiate(spellToCast1, castPoint.position + new Vector3(1.5f, 0f, 0f), castPointRotator.rotation);
+        Instantiate(spellToCast1, castPoint.position + new Vector3(1.5f, 0f, 0f), groundPoint.rotation);
         AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.windPunch);
         yield return new WaitForSeconds(0.3f);
         Instantiate(spellToCast1, castPoint.position + new Vector3(-1f, 0f, 0f), castPointRotator.rotation);

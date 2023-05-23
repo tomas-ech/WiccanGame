@@ -334,7 +334,7 @@ Transform:
   - {fileID: 5202433142851243328}
   - {fileID: 5202433143123737942}
   m_Father: {fileID: 5202433142785782973}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5202433142655279683
 GameObject:
@@ -448,7 +448,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6048963860426036340}
-  - {fileID: 5202433143944144119}
   - {fileID: 5202433143478490812}
   - {fileID: 7399018722459262442}
   m_Father: {fileID: 0}
@@ -550,7 +549,12 @@ MonoBehaviour:
   castPoint: {fileID: 5202433142851243328}
   groundPoint: {fileID: 5202433143123737942}
   castPointRotator: {fileID: 5202433143478490812}
-  timeBetweenCast: 1
+  attack1CD: 1
+  attack2CD: 6
+  currentCastTimer1: 0
+  currentCastTimer2: 0
+  castingMagic1: 0
+  castingMagic2: 0
 --- !u!1 &5202433142851243343
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,14 +864,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5202433143944144118}
   m_LocalRotation: {x: -0.11199611, y: 0.00000001709813, z: -0.0000000019270476, w: 0.99370867}
-  m_LocalPosition: {x: 0, y: 5, z: -10}
+  m_LocalPosition: {x: -3.3063736, y: -10.0301, z: 1.4862766}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5202433141960463518}
   - {fileID: 5202433143785297439}
   - {fileID: 5202433142655279684}
-  m_Father: {fileID: 5202433142785782973}
+  m_Father: {fileID: 7399018722459262442}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5202433143944144137
@@ -1034,8 +1038,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7399018723074005145}
+  - {fileID: 5202433143944144119}
   m_Father: {fileID: 5202433142785782973}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &7399018722459262443
 Rigidbody:
@@ -1297,7 +1302,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: ce5a7282affce33498d9e8d12138d414, type: 2}
+      objectReference: {fileID: 9100000, guid: 34c6024b01000f94e91b6e5801a37715, type: 2}
     - target: {fileID: 5866666021909216657, guid: ad7da18187e9c1f42987ef5e813e4479,
         type: 3}
       propertyPath: m_UpdateMode

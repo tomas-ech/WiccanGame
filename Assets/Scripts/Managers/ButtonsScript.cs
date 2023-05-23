@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ButtonsScript : MonoBehaviour
 {
@@ -10,17 +11,41 @@ public class ButtonsScript : MonoBehaviour
     public GameObject playerUI;
     public GameObject tutorialSelectCharacter;
     public GameObject boardCamera;
-    //public GameObject mainCamera;
+    public GameObject tutorialTexts;
     public GameObject initialPage;
     public GameObject spawnObj;
+    public GameObject menuPage;
 
 
+    private GameObject playerCamera;
     
 
     private void Start()
     {
         spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
+    public void ReturnToMainMenu()
+    {
+        AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
+        initialPage.SetActive(true);
+        tutorialSelectCharacter.SetActive(false);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+
     public void PlayTheGame()
     {
         AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
@@ -40,11 +65,14 @@ public class ButtonsScript : MonoBehaviour
 
     public void CharacterSelected1()
     {
+        spawnManager.tutorial1 = true;
+
         tutorialSelectCharacter.SetActive(false);
         UiManager.SetActive(true);
         playerUI.SetActive(true);
         boardCamera.SetActive(false);
-        spawnManager.tutorial1 = true;
+        tutorialTexts.SetActive(true);
+
         AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
         AudioManager.Instance.canvasMusic.Stop();
         AudioManager.Instance.canvasMusicSeasonMap.Play();
@@ -53,17 +81,17 @@ public class ButtonsScript : MonoBehaviour
 
     public void CharacterSelected2()
     {
+        spawnManager.tutorial2 = true;
+
         tutorialSelectCharacter.SetActive(false);
         UiManager.SetActive(true);
         playerUI.SetActive(true);
         boardCamera.SetActive(false);
-        spawnManager.tutorial2 = true;
+        tutorialTexts.SetActive(true);
+
         AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
         AudioManager.Instance.canvasMusic.Stop();
         AudioManager.Instance.canvasMusicSeasonMap.Play();
         AudioManager.Instance.canvasMusicSeasonMap.volume = 0.3f;
-
     }
-
-
 }
