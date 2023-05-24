@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/ScenesMirror/Offline.unity
+    guid: 586374e8ef718ea40bf2a2dc319ec40c
+  - enabled: 1
+    path: Assets/Scenes/ScenesMirror/Lobby.unity
+    guid: 3a00699826afb774caff2c21a8139e0f
+  - enabled: 1
     path: Assets/Scenes/CombatScene1.unity
     guid: 82930409e960524478510dda21da9e49
   m_configObjects: {}

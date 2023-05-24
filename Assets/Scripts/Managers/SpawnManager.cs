@@ -54,7 +54,7 @@ public class SpawnManager : MonoBehaviour
             //Organizar mapas como map1, map2... 
             Instantiate(locationsArray[randomLocation], locationsArray[randomLocation].transform.position, locationsArray[randomLocation].transform.rotation);
 
-            randomCharacter = Random.Range(0, charactersArray.Count);
+            /*randomCharacter = Random.Range(0, charactersArray.Count);
 
             if (randomLocation == 0)
             {
@@ -70,7 +70,7 @@ public class SpawnManager : MonoBehaviour
 
                 //Cambiar el personaje random por la varibale referenceNumber que tiene el script DropZone
                 Instantiate(charactersArray[randomCharacter], spawnPointsLavaMap[randomSpawn].transform.position, charactersArray[randomCharacter].transform.rotation);
-            }
+            }*/
 
             randomPlay = false;
         }

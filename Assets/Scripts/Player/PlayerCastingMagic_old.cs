@@ -4,7 +4,7 @@ using UnityEngine;
 using Mirror;
 
 
-public class PlayerCastingMagic : NetworkBehaviour
+public class PlayerCastingMagic_old : NetworkBehaviour
 {
 
     [SerializeField] private FireBallSpell spellToCast1;
