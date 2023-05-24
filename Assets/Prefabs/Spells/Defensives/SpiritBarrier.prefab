@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2923754350745856582}
   m_Layer: 0
   m_Name: SpiritBarrier
-  m_TagString: Spell
+  m_TagString: Nature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,8 +97,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.7068448
+  m_Center: {x: 0, y: 0.0013540983, z: 0}
 --- !u!114 &-3354785978657682928
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,12 +15,13 @@ MonoBehaviour:
   Name: FireBall
   Description: 
   EarthMagic: 0
-  WindMagic: 0
-  WaterMagic: 0
   FireMagic: 1
+  SpiritMagic: 0
+  WaterMagic: 0
+  WindMagic: 0
   DamageAmount: 100
   ManaCost: 50
-  Lifetime: 500
-  Speed: 40
-  SpellRadius: 1
+  Lifetime: 5
+  Speed: 20
+  SpellRadius: 0.5
   SpellRange: 20

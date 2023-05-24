@@ -194,7 +194,7 @@ public class PlayerController : MonoBehaviour
             //Secundary Attack
             if (Input.GetMouseButtonDown(1) && !playerCastingMagic.castingMagic2) {StartCoroutine(RockAttack());}
             //Defensive Spell
-            if (Input.GetKeyDown(KeyCode.Tab) && !playerCastingMagic.castingMagic3) {StartCoroutine(EarthBarrier());}
+            if (Input.GetKeyDown(KeyCode.Tab) && !playerCastingMagic.castingMagic3) {StartCoroutine(SpiritBarrier());}
         }
 
         if (characterName == "Gelidon")
@@ -203,6 +203,8 @@ public class PlayerController : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && !playerCastingMagic.castingMagic1){StartCoroutine(PunchAttack());}
             //Secundary Attack
             if (Input.GetMouseButtonDown(1) && !playerCastingMagic.castingMagic2) {StartCoroutine(BlizzardAttack());}
+            //Defensive Spell
+            if (Input.GetKeyDown(KeyCode.Tab) && !playerCastingMagic.castingMagic3) {StartCoroutine(SpiritBarrier());}
         }
     }
 
@@ -250,7 +252,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //Defensive Abilities
-    IEnumerator EarthBarrier()
+    IEnumerator SpiritBarrier()
     {
         rb3d.isKinematic = true;
         playerAnimator.SetBool("IsBlocking", true);
