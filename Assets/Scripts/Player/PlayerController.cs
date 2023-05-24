@@ -165,15 +165,18 @@ public class PlayerController : MonoBehaviour
         if (horizontalInput > 0)
         {
             playerAnimator.SetBool("RightWalk", true);
+            AudioManager.Instance.walkingSound.Play();
         }
         else if (horizontalInput < 0)
         {
             playerAnimator.SetBool("LeftWalk", true);
+            AudioManager.Instance.walkingSound.Play();
         }
         else
         {
             playerAnimator.SetBool("RightWalk", false);
             playerAnimator.SetBool("LeftWalk", false);
+            AudioManager.Instance.walkingSound.Stop();
         }
         //Salto
         if (Input.GetKey(jumpKey)) {StartCoroutine(JumpAnimation());}
@@ -190,6 +193,8 @@ public class PlayerController : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && !playerCastingMagic.castingMagic1){StartCoroutine(BombAttack());}
             //Secundary Attack
             if (Input.GetMouseButtonDown(1) && !playerCastingMagic.castingMagic2) {StartCoroutine(RockAttack());}
+            //Defensive Spell
+            if (Input.GetKeyDown(KeyCode.Tab) && !playerCastingMagic.castingMagic3) {StartCoroutine(EarthBarrier());}
         }
 
         if (characterName == "Gelidon")
@@ -243,4 +248,15 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetBool("Attack2", false);
         rb3d.isKinematic = false;
     }
+
+    //Defensive Abilities
+    IEnumerator EarthBarrier()
+    {
+        rb3d.isKinematic = true;
+        playerAnimator.SetBool("IsBlocking", true);
+        yield return new WaitForSeconds(2);
+        playerAnimator.SetBool("IsBlocking", false);
+        rb3d.isKinematic = false;
+    }
+
 }

@@ -8,10 +8,13 @@ public class SpellScriptableObject : ScriptableObject
 {
     public string Name;
     public string Description;
+    
     public bool EarthMagic;
-    public bool WindMagic;
-    public bool WaterMagic;
     public bool FireMagic;
+    public bool SpiritMagic;
+    public bool WaterMagic;
+    public bool WindMagic;
+
     public float DamageAmount = 10f;
     public float ManaCost = 5f;
     public float Lifetime = 2f;

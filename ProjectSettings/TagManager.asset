@@ -11,6 +11,7 @@ TagManager:
   - Water
   - Nature
   - Lava
+  - Spell
   layers:
   - Default
   - TransparentFX

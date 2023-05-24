@@ -645,15 +645,21 @@ MonoBehaviour:
   spellToCast2: {fileID: 3150382708309061463, guid: 55b0e009075cc9944b4462c8d6a95de4,
     type: 3}
   spellInfo2: {fileID: 11400000, guid: ad8398cbc3c507b4aaf9c78a7f8369bd, type: 2}
+  spellToCast3: {fileID: 506978476356283334, guid: 99905cb97d573a24fbe1a3f2ad3852ac,
+    type: 3}
+  spellInfo3: {fileID: 11400000, guid: 122049e9730b7e1409c7c3c950940791, type: 2}
   castPoint: {fileID: 6078839908506705037}
   groundPoint: {fileID: 6078839909861780635}
   castPointRotator: {fileID: 6078839910278465393}
   attack1CD: 1
   attack2CD: 6
+  attack3CD: 10
   currentCastTimer1: 0
   currentCastTimer2: 0
+  currentCastTimer3: 0
   castingMagic1: 0
   castingMagic2: 0
+  castingMagic3: 0
 --- !u!114 &6078839908576503155
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,8 +10,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image manaBar;
     [SerializeField] private GameObject[] attack1;
     [SerializeField] private GameObject[] attack2;
+    [SerializeField] private GameObject[] defensive;
     [SerializeField] private Image cover1;
     [SerializeField] private Image cover2;
+    [SerializeField] private Image cover3;
 
 
     private PlayerStats playerStats;
@@ -101,12 +103,15 @@ public class UIManager : MonoBehaviour
         {
             attack2[3].SetActive(true);
         }
+
     }
     private void UpdateCoolDown()
     {
         cover1.fillAmount = 1 - playerCastingMagic.currentCastTimer1 / playerCastingMagic.attack1CD;
 
         cover2.fillAmount = 1 - playerCastingMagic.currentCastTimer2 / playerCastingMagic.attack2CD;
+
+        cover3.fillAmount = 1 - playerCastingMagic.currentCastTimer3 / playerCastingMagic.attack3CD;
     }
 
     IEnumerator MoveInstructions()
