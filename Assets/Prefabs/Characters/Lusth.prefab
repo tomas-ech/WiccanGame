@@ -559,7 +559,12 @@ MonoBehaviour:
   castPoint: {fileID: 6204344015967261937}
   groundPoint: {fileID: 6204344016248071399}
   castPointRotator: {fileID: 6204344016697528077}
-  timeBetweenCast: 1
+  attack1CD: 1
+  attack2CD: 6
+  currentCastTimer1: 0
+  currentCastTimer2: 0
+  castingMagic1: 0
+  castingMagic2: 0
 --- !u!114 &6204344016036015375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1297,7 +1302,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 7aa7723fa5f279943b5129d94c9c762d, type: 2}
+      objectReference: {fileID: 9100000, guid: ce5a7282affce33498d9e8d12138d414, type: 2}
     - target: {fileID: 5866666021909216657, guid: cef98889f2ebd2e4db6c6c111dcfe249,
         type: 3}
       propertyPath: m_ApplyRootMotion

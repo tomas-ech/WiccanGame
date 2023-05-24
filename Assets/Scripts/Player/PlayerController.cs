@@ -211,36 +211,36 @@ public class PlayerController : MonoBehaviour
     //Primary Abilities
     IEnumerator BombAttack()
     {
-        rb3d.constraints = RigidbodyConstraints.FreezePosition;
+        rb3d.isKinematic = true;
         playerAnimator.SetBool("Attack1", true);
         yield return new WaitForSeconds(1);
         playerAnimator.SetBool("Attack1", false);
-        rb3d.constraints = ~RigidbodyConstraints.FreezePosition;
+        rb3d.isKinematic = false;
     }
     IEnumerator PunchAttack()
     {
-        rb3d.constraints = RigidbodyConstraints.FreezePosition;
+        rb3d.isKinematic = true;
         playerAnimator.SetBool("Attack1", true);
         yield return new WaitForSeconds(1.5f);
         playerAnimator.SetBool("Attack1", false);
-        rb3d.constraints = ~RigidbodyConstraints.FreezePosition;
+        rb3d.isKinematic = false;
     }
 
     //Secundary Abilities
     IEnumerator RockAttack()
     {
-        rb3d.constraints = RigidbodyConstraints.FreezePosition;
+        rb3d.isKinematic = true;
         playerAnimator.SetBool("Attack2", true);
         yield return new WaitForSeconds(2);
         playerAnimator.SetBool("Attack2", false);
-        rb3d.constraints = ~RigidbodyConstraints.FreezePosition;
+        rb3d.isKinematic = false;
     }
     IEnumerator BlizzardAttack()
     {
-        rb3d.constraints = RigidbodyConstraints.FreezePosition;
+        rb3d.isKinematic = true;
         playerAnimator.SetBool("Attack2", true);
         yield return new WaitForSeconds(2);
         playerAnimator.SetBool("Attack2", false);
-        rb3d.constraints = ~RigidbodyConstraints.FreezePosition;
+        rb3d.isKinematic = false;
     }
 }

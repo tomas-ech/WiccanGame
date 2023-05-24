@@ -21,6 +21,15 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI manaText;
     public TextMeshProUGUI namePlayer;
     public TextMeshProUGUI namePlayerShadow;
+    public GameObject moveInstructions;
+    public GameObject attack1Tutorial;
+    public GameObject attack2Tutorial;
+
+
+    private void OnEnable()
+    {
+        StartCoroutine(MoveInstructions());
+    }
 
     
     private void Update()
@@ -98,5 +107,19 @@ public class UIManager : MonoBehaviour
         cover1.fillAmount = 1 - playerCastingMagic.currentCastTimer1 / playerCastingMagic.attack1CD;
 
         cover2.fillAmount = 1 - playerCastingMagic.currentCastTimer2 / playerCastingMagic.attack2CD;
+    }
+
+    IEnumerator MoveInstructions()
+    {
+        attack1Tutorial.SetActive(false);
+        attack2Tutorial.SetActive(false);
+        yield return new WaitForSeconds(5);
+        moveInstructions.SetActive(false);
+        attack1Tutorial.SetActive(true);
+        yield return new WaitForSeconds(5);
+        attack1Tutorial.SetActive(false);
+        attack2Tutorial.SetActive(true);
+        yield return new WaitForSeconds(5);
+        attack2Tutorial.SetActive(false);
     }
 }
