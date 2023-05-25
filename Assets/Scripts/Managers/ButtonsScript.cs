@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class ButtonsScript : MonoBehaviour
 {
-    [SerializeField] private GameObject[] characterArray;
     private SpawnManager spawnManager;
     public GameObject UiManager;
     public GameObject playerUI;

@@ -22,7 +22,7 @@ MonoBehaviour:
   FireMagic: 1
   Speed: 200
   Health: 2500
-  Mana: 1000
+  Mana: 1500
   Strength: 100
   Agility: 100
   Intellect: 100

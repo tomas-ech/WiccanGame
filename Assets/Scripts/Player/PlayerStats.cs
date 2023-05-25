@@ -14,7 +14,8 @@ public class PlayerStats : MonoBehaviour
     public float characterSpeed;
     [HideInInspector] public float timeToRechargeMana = 5f;
     [HideInInspector] public float currentManaRechargeTimer; 
-    [HideInInspector] public bool playerIsDead;
+    [HideInInspector] public bool playerIsDead = false;
+    private bool healthRegen;
 
     void Start()
     {
@@ -35,9 +36,15 @@ public class PlayerStats : MonoBehaviour
 
         if (characterCurrentHealth < 1)
         {
+            playerIsDead = true;
             Animator animator = GetComponentInChildren<Animator>();
             animator.SetBool("Dead", true);
             StartCoroutine(DestroyOnDead());
+        }
+
+        if (healthRegen == true)
+        {
+            characterCurrentHealth += 50 * Time.deltaTime;
         }
     }
 
@@ -50,7 +57,7 @@ public class PlayerStats : MonoBehaviour
             characterCurrentHealth = characterMaxHealth;
         }
 
-        if (characterCurrentHealth < 0)
+        if (characterCurrentHealth < 1)
         {
             characterCurrentHealth = 0;
         }
@@ -81,5 +88,23 @@ public class PlayerStats : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Spell"))
+        {
+            healthRegen = true;
+            Debug.Log("Curandose un tris");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Spell"))
+        {
+            healthRegen = false;
+            Debug.Log("Ya no se cura, que pesar");
+        }
     }
 }

@@ -106,10 +106,9 @@ public class ImpaleSpell : MonoBehaviour
 
             IEnumerator EnemyStun()
             {
-                enemy.constraints = RigidbodyConstraints.FreezeAll;
-                enemy.constraints = ~RigidbodyConstraints.FreezePositionY;
+                enemy.isKinematic = true;
                 yield return new WaitForSeconds(2);
-                enemy.constraints = ~RigidbodyConstraints.FreezePosition;
+                enemy.isKinematic = false;
             }
         }
     }

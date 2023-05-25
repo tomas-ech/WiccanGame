@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
     public GameObject moveInstructions;
     public GameObject attack1Tutorial;
     public GameObject attack2Tutorial;
+    public GameObject defenseTutorial;
 
 
     private void OnEnable()
@@ -118,13 +119,17 @@ public class UIManager : MonoBehaviour
     {
         attack1Tutorial.SetActive(false);
         attack2Tutorial.SetActive(false);
-        yield return new WaitForSeconds(5);
+        defenseTutorial.SetActive(false);
+        yield return new WaitForSeconds(4);
         moveInstructions.SetActive(false);
         attack1Tutorial.SetActive(true);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4);
         attack1Tutorial.SetActive(false);
         attack2Tutorial.SetActive(true);
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4);
         attack2Tutorial.SetActive(false);
+        defenseTutorial.SetActive(true);
+        yield return new WaitForSeconds(4);
+        defenseTutorial.SetActive(false);
     }
 }
