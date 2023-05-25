@@ -11,26 +11,40 @@ public class CamController : MonoBehaviour
     public Transform playerObj;
     public Rigidbody rbCam;
     public float rotationSpeed;
-
     public CameraStyle currentStyle;
     public Transform combatLootAt;
+
+    private PlayerStats playerStats;
+    private int enemyCount;
 
     public enum CameraStyle
     {
         Basic,
-        Combat,
-        Topdown
+        Combat
     }
 
 
-    // Start is called before the first frame update
+    
     void Start()
     {
+        playerStats = GetComponentInParent<PlayerStats>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-    // Update is called once per frame
+    private void Update()
+    {
+        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+
+        if (playerStats.characterCurrentHealth < 1 || enemyCount < 1)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
+
+    }
+
     void FixedUpdate()
     {
         //Rotar el objeto orientation

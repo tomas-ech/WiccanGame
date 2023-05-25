@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class UIManager : MonoBehaviour
     public GameObject defenseTutorial;
     public GameObject mission1;
     public GameObject tip1;
+    private int enemyCount;
 
 
     private void OnEnable()
@@ -48,8 +50,11 @@ public class UIManager : MonoBehaviour
             playerCastingMagic = GameObject.FindWithTag("Player").GetComponent<PlayerCastingMagic>();
         }
 
+        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+
         AbilitiesIcon();
         UpdateCoolDown();
+        WinLoseConditions();
        
         namePlayer.text = playerStats.characterStats.Name;
         namePlayerShadow.text = playerStats.characterStats.Name;
@@ -71,6 +76,18 @@ public class UIManager : MonoBehaviour
     {
         manaBar.fillAmount = mana / maxMana;
         manaText.text = (mana*100 / maxMana).ToString("F0") + "%"; 
+    }
+
+    private void WinLoseConditions()
+    {
+        if (playerStats.characterCurrentHealth < 1)
+        {
+            StartCoroutine(PlayerDead());
+        }
+        if (enemyCount < 1)
+        {
+            StartCoroutine(PlayerWin());
+        }
     }
     
     private void AbilitiesIcon()
@@ -149,5 +166,17 @@ public class UIManager : MonoBehaviour
         tip1.SetActive(true);
         yield return new WaitForSeconds(6);
         tip1.SetActive(false);
+    }
+
+    IEnumerator PlayerDead()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(1);
+    }
+
+    IEnumerator PlayerWin()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(2);
     }
 }

@@ -39,7 +39,12 @@ public class PlayerStats : MonoBehaviour
             playerIsDead = true;
             Animator animator = GetComponentInChildren<Animator>();
             animator.SetBool("Dead", true);
-            StartCoroutine(DestroyOnDead());
+            
+            if(this.CompareTag("Enemy"))
+            {
+                StartCoroutine(DestroyOnDead());
+            }
+            
         }
 
         if (healthRegen == true)

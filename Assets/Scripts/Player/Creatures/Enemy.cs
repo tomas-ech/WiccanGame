@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     private PlayerStats playerStats;
 
     [Header("Patroling")]
+    private Vector3 initialPosition;
     public Vector3 walkpoint;
     private bool walkPointSet;
     public float walkPointRange = 2f;
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>(); 
         playerStats = GetComponent<PlayerStats>();
         enemyAnimator = GetComponentInChildren<Animator>();
+        initialPosition = transform.position;
     }
 
     void Update()
@@ -44,7 +46,7 @@ public class Enemy : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if(playerStats.characterCurrentHealth > 1)
+        if(playerStats.characterCurrentHealth > 1 && player.GetComponent<PlayerStats>().characterCurrentHealth > 1)
         {
             if (!playerInSightRange && !playerInAttackRange) 
             {
@@ -53,8 +55,11 @@ public class Enemy : MonoBehaviour
             if (playerInSightRange && !playerInAttackRange) {ChasePlayer();}
             if (playerInSightRange && playerInAttackRange) {AttackPlayer();}
         }
-
         
+        else if (playerStats.characterCurrentHealth > 1 && player.GetComponent<PlayerStats>().characterCurrentHealth < 1)
+        {
+            agent.SetDestination(initialPosition);
+        }
 
     }
 
@@ -83,38 +88,6 @@ public class Enemy : MonoBehaviour
             walkPointSet = true;
         }
     }
-
-    /*private void Patroling()
-    {
-        if(agent.remainingDistance <= agent.stoppingDistance) //done with path
-        {
-            Vector3 point;
-            if (RandomPoint(this.transform.position + transform.up, walkPointRange, out point)) //pass in our centre point and radius of area
-            {
-                Debug.Log("Caminando" + point);
-                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
-                agent.SetDestination(point);
-            }
-
-            enemyAnimator.SetBool("IsRunning", true); 
-        }
-        else {enemyAnimator.SetBool("IsRunning", false);}
-    }
-    bool RandomPoint(Vector3 center, float range, out Vector3 result)
-    {
-        Vector3 randomPoint = center + Random.insideUnitSphere * range; //random point in a sphere 
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(randomPoint, out hit, 5.0f, NavMesh.AllAreas)) //
-        { 
-            //the 1.0f is the max distance from the random point to a point on the navmesh, might want to increase if range is big
-            //or add a for loop like in the documentation
-            result = hit.position;
-            return true;
-        }
-
-        result = Vector3.zero;
-        return false;
-    }*/
 
     private void ChasePlayer()
     {

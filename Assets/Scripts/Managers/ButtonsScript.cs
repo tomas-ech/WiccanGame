@@ -44,6 +44,11 @@ public class ButtonsScript : MonoBehaviour
         Application.Quit();
     }
 
+    public void ReturnToMainScene()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 
     public void PlayTheGame()
     {
