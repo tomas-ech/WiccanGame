@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image cover2;
     [SerializeField] private Image cover3;
 
+    [HideInInspector] public bool isMission1;
+
 
     private PlayerStats playerStats;
     private PlayerCastingMagic playerCastingMagic;
@@ -27,6 +29,8 @@ public class UIManager : MonoBehaviour
     public GameObject attack1Tutorial;
     public GameObject attack2Tutorial;
     public GameObject defenseTutorial;
+    public GameObject mission1;
+    public GameObject tip1;
 
 
     private void OnEnable()
@@ -131,5 +135,19 @@ public class UIManager : MonoBehaviour
         defenseTutorial.SetActive(true);
         yield return new WaitForSeconds(4);
         defenseTutorial.SetActive(false);
+    }
+
+    IEnumerator Mission1()
+    {
+        attack1Tutorial.SetActive(false);
+        attack2Tutorial.SetActive(false);
+        defenseTutorial.SetActive(false);
+        mission1.SetActive(true);
+        yield return new WaitForSeconds(6);
+        mission1.SetActive(false);
+        yield return new WaitForSeconds(15);
+        tip1.SetActive(true);
+        yield return new WaitForSeconds(6);
+        tip1.SetActive(false);
     }
 }

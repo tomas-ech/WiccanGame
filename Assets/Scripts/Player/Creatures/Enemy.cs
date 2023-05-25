@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     [Header("Patroling")]
     public Vector3 walkpoint;
     private bool walkPointSet;
-    public float walkPointRange;
+    public float walkPointRange = 2f;
 
     [Header("Attacking")]
     public float timeBetweenAttacks;
@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-    /*private void Patroling()
+    private void Patroling()
     {
         if (!walkPointSet) {SearchWalkPoint();}
 
@@ -78,13 +78,13 @@ public class Enemy : MonoBehaviour
 
         walkpoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkpoint, -transform.up, 5f, whatIsGround))
+        if (Physics.Raycast(walkpoint, -transform.up, 2f, whatIsGround))
         {
             walkPointSet = true;
         }
-    }*/
+    }
 
-    private void Patroling()
+    /*private void Patroling()
     {
         if(agent.remainingDistance <= agent.stoppingDistance) //done with path
         {
@@ -114,7 +114,7 @@ public class Enemy : MonoBehaviour
 
         result = Vector3.zero;
         return false;
-    }
+    }*/
 
     private void ChasePlayer()
     {
@@ -141,5 +141,6 @@ public class Enemy : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
+        enemyAnimator.SetBool("Attack1", false);
     }
 }

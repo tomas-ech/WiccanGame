@@ -12,6 +12,7 @@ TagManager:
   - Nature
   - Lava
   - Spell
+  - Box
   layers:
   - Default
   - TransparentFX
