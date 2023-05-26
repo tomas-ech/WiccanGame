@@ -9,6 +9,7 @@ public class PlayerScriptableObject : ScriptableObject
     public string Name;
     public string Description;
     public string Clan;
+    public bool spiritMagic;
     public bool EarthMagic;
     public bool WindMagic;
     public bool WaterMagic;

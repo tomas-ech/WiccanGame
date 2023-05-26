@@ -527,6 +527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aaa25aa42a467149a56dfd234d2d13d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 7022914257634984475}
   jumpForce: 300
   jumpCD: 1
   horizontalInput: 0
@@ -558,7 +559,12 @@ MonoBehaviour:
   castPoint: {fileID: 6204344015967261937}
   groundPoint: {fileID: 6204344016248071399}
   castPointRotator: {fileID: 6204344016697528077}
-  timeBetweenCast: 1
+  attack1CD: 1
+  attack2CD: 6
+  currentCastTimer1: 0
+  currentCastTimer2: 0
+  castingMagic1: 0
+  castingMagic2: 0
 --- !u!114 &6204344016036015375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,7 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3496af8e2b58343b3537251d526035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterStats: {fileID: 11400000, guid: 5755840bfac6b55409aaaacf7332f27e, type: 2}
+  characterStats: {fileID: 11400000, guid: edda9df14bc634545a9e31ebf978548b, type: 2}
   characterMaxHealth: 0
   characterCurrentHealth: 0
   characterMaxMana: 0
@@ -1296,7 +1302,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 7aa7723fa5f279943b5129d94c9c762d, type: 2}
+      objectReference: {fileID: 9100000, guid: ce5a7282affce33498d9e8d12138d414, type: 2}
     - target: {fileID: 5866666021909216657, guid: cef98889f2ebd2e4db6c6c111dcfe249,
         type: 3}
       propertyPath: m_ApplyRootMotion
@@ -1313,6 +1319,12 @@ Transform:
 --- !u!1 &4385832272412115675 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cef98889f2ebd2e4db6c6c111dcfe249,
+    type: 3}
+  m_PrefabInstance: {fileID: 3466912887482400650}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7022914257634984475 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: cef98889f2ebd2e4db6c6c111dcfe249,
     type: 3}
   m_PrefabInstance: {fileID: 3466912887482400650}
   m_PrefabAsset: {fileID: 0}

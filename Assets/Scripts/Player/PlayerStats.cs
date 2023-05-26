@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField] private PlayerScriptableObject characterStats;
-
     [Header("Character Stats")]
+    public PlayerScriptableObject characterStats;
     public float characterMaxHealth;
     public float characterCurrentHealth;
     public float characterMaxMana;
@@ -15,7 +14,8 @@ public class PlayerStats : MonoBehaviour
     public float characterSpeed;
     [HideInInspector] public float timeToRechargeMana = 5f;
     [HideInInspector] public float currentManaRechargeTimer; 
-    [HideInInspector] public bool playerIsDead;
+    [HideInInspector] public bool playerIsDead = false;
+    private bool healthRegen;
 
     void Start()
     {
@@ -34,9 +34,22 @@ public class PlayerStats : MonoBehaviour
     {
         StatsControl();
 
-        if (characterCurrentHealth <= 0)
+        if (characterCurrentHealth < 1)
         {
-            Destroy(gameObject);
+            playerIsDead = true;
+            Animator animator = GetComponentInChildren<Animator>();
+            animator.SetBool("Dead", true);
+
+            if(this.CompareTag("Enemy"))
+            {
+                StartCoroutine(DestroyOnDead());
+            }
+            
+        }
+
+        if (healthRegen == true)
+        {
+            characterCurrentHealth += 100 * Time.deltaTime;
         }
     }
 
@@ -49,7 +62,7 @@ public class PlayerStats : MonoBehaviour
             characterCurrentHealth = characterMaxHealth;
         }
 
-        if (characterCurrentHealth < 0)
+        if (characterCurrentHealth < 1)
         {
             characterCurrentHealth = 0;
         }
@@ -73,6 +86,28 @@ public class PlayerStats : MonoBehaviour
         if (characterCurrentMana < 0)
         {
             characterCurrentMana = 0;
+        }
+    }
+
+    IEnumerator DestroyOnDead()
+    {
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Spell"))
+        {
+            healthRegen = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Spell"))
+        {
+            healthRegen = false;
         }
     }
 }

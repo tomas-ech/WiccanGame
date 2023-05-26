@@ -6,7 +6,9 @@ public class PlayerController : MonoBehaviour
 {
 
     private PlayerStats playerStats;
-    private Animator playerAnimator;
+    private PlayerCastingMagic playerCastingMagic;
+    [SerializeField] private Animator playerAnimator;
+    private string characterName;
 
     [Header("Movement Stats")]
     public float jumpForce;
@@ -31,9 +33,11 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerStats = GetComponent<PlayerStats>();
-        playerAnimator = GameObject.Find("PlayerModel").GetComponent<Animator>();
+        characterName = playerStats.characterStats.Name;
+        playerCastingMagic = GetComponent<PlayerCastingMagic>();
         rb3d = GetComponent<Rigidbody>();
-        
+
+        rb3d.isKinematic = false;
         rb3d.freezeRotation = true;
         readyToJump = true;
     }
@@ -146,6 +150,8 @@ public class PlayerController : MonoBehaviour
         if (verticalInput > 0)
         {
             playerAnimator.SetBool("IsRunning", true);
+            AudioManager.Instance.walkingSound.Play();
+            AudioManager.Instance.walkingSound.volume = 1;
         }
         else if (verticalInput < 0)
         {
@@ -155,31 +161,68 @@ public class PlayerController : MonoBehaviour
         {
             playerAnimator.SetBool("IsRunning", false);
             playerAnimator.SetBool("WalkBack", false);
+            AudioManager.Instance.walkingSound.Stop();
         }
         //Movimientos horizontales
         if (horizontalInput > 0)
         {
             playerAnimator.SetBool("RightWalk", true);
+            AudioManager.Instance.walkingSound.Play();
         }
         else if (horizontalInput < 0)
         {
             playerAnimator.SetBool("LeftWalk", true);
+            AudioManager.Instance.walkingSound.Play();
         }
         else
         {
             playerAnimator.SetBool("RightWalk", false);
             playerAnimator.SetBool("LeftWalk", false);
+            AudioManager.Instance.walkingSound.Stop();
         }
         //Salto
         if (Input.GetKey(jumpKey)) {StartCoroutine(JumpAnimation());}
+
+        //Muerte
+        if (playerStats.characterCurrentHealth < 1)
+        {
+            rb3d.isKinematic = true;
+            playerAnimator.SetBool("Dead", true);
+            AudioManager.Instance.canvasMusicSeasonMap.Stop();
+
+            if (!AudioManager.Instance.audioManager.isPlaying){AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.youLoseMusic);}
+        }
+
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length < 1)
+        {
+            rb3d.isKinematic = true;
+            AudioManager.Instance.canvasMusicSeasonMap.Stop();
+
+            if (!AudioManager.Instance.audioManager.isPlaying){AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.winMusic);}
+        }
        
     }
     private void PlayerAbilitiesAnimation()
     {
-        //Primary Attack
-        if (Input.GetMouseButtonDown(0)) {StartCoroutine(BombAttack());}
-        //Secundary Attack
-        if (Input.GetMouseButtonDown(1)) {StartCoroutine(RockAttack());}
+        if (characterName == "Thazarian")
+        {
+            //Primary Attack
+            if (Input.GetMouseButtonDown(0) && !playerCastingMagic.castingMagic1){StartCoroutine(BombAttack());}
+            //Secundary Attack
+            if (Input.GetMouseButtonDown(1) && !playerCastingMagic.castingMagic2) {StartCoroutine(RockAttack());}
+            //Defensive Spell
+            if (Input.GetKeyDown(KeyCode.Tab) && !playerCastingMagic.castingMagic3) {StartCoroutine(SpiritBarrier());}
+        }
+
+        if (characterName == "Gelidon")
+        {
+            //Primary Attack
+            if (Input.GetMouseButtonDown(0) && !playerCastingMagic.castingMagic1){StartCoroutine(PunchAttack());}
+            //Secundary Attack
+            if (Input.GetMouseButtonDown(1) && !playerCastingMagic.castingMagic2) {StartCoroutine(BlizzardAttack());}
+            //Defensive Spell
+            if (Input.GetKeyDown(KeyCode.Tab) && !playerCastingMagic.castingMagic3) {StartCoroutine(SpiritBarrier());}
+        }
     }
 
     IEnumerator JumpAnimation()
@@ -188,20 +231,52 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1);
         playerAnimator.SetBool("IsJumping", false);
     }
-    IEnumerator RockAttack()
-    {
-        rb3d.constraints = RigidbodyConstraints.FreezePosition;
-        playerAnimator.SetBool("Rocks", true);
-        yield return new WaitForSeconds(2);
-        playerAnimator.SetBool("Rocks", false);
-        rb3d.constraints = ~RigidbodyConstraints.FreezePosition;
-    }
+
+    //Primary Abilities
     IEnumerator BombAttack()
     {
-        rb3d.constraints = RigidbodyConstraints.FreezePosition;
-        playerAnimator.SetBool("BombThrow", true);
+        rb3d.isKinematic = true;
+        playerAnimator.SetBool("Attack1", true);
         yield return new WaitForSeconds(1);
-        playerAnimator.SetBool("BombThrow", false);
-        rb3d.constraints = ~RigidbodyConstraints.FreezePosition;
+        playerAnimator.SetBool("Attack1", false);
+        rb3d.isKinematic = false;
     }
+    IEnumerator PunchAttack()
+    {
+        rb3d.isKinematic = true;
+        playerAnimator.SetBool("Attack1", true);
+        yield return new WaitForSeconds(1.5f);
+        playerAnimator.SetBool("Attack1", false);
+        rb3d.isKinematic = false;
+    }
+
+    //Secundary Abilities
+    IEnumerator RockAttack()
+    {
+        rb3d.isKinematic = true;
+        playerAnimator.SetBool("Attack2", true);
+        yield return new WaitForSeconds(2);
+        playerAnimator.SetBool("Attack2", false);
+        rb3d.isKinematic = false;
+    }
+    IEnumerator BlizzardAttack()
+    {
+        rb3d.isKinematic = true;
+        playerAnimator.SetBool("Attack2", true);
+        yield return new WaitForSeconds(2);
+        playerAnimator.SetBool("Attack2", false);
+        rb3d.isKinematic = false;
+    }
+
+    //Defensive Abilities
+    IEnumerator SpiritBarrier()
+    {
+        rb3d.isKinematic = true;
+        playerAnimator.SetBool("IsBlocking", true);
+        yield return new WaitForSeconds(0.5f);
+        rb3d.isKinematic = false;
+        playerAnimator.SetBool("IsBlocking", false);
+        
+    }
+
 }

@@ -15,14 +15,15 @@ MonoBehaviour:
   Name: Gelidon
   Description: Mutante congelado
   Clan: Azul
+  spiritMagic: 1
   EarthMagic: 0
   WindMagic: 1
   WaterMagic: 1
   FireMagic: 0
-  Speed: 190
-  Health: 5000
-  Mana: 1200
+  Speed: 210
+  Health: 3000
+  Mana: 1500
   Strength: 200
   Agility: 100
   Intellect: 100
-  Spirit: 100
+  Spirit: 200

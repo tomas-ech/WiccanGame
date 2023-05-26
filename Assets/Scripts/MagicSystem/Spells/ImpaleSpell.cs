@@ -90,7 +90,7 @@ public class ImpaleSpell : MonoBehaviour
             {
                 //We add a force upwards to the rigidbody
                 StartCoroutine(EnemyStun());
-                enemy.AddForce(Vector3.up * force, ForceMode.VelocityChange);
+                enemy.AddForce(Vector3.up* force, ForceMode.VelocityChange);
                 
                 //We create our impale fx hit
                 var fx = Instantiate(impaleHitFX, enemy.transform.position, Quaternion.identity);
@@ -99,14 +99,15 @@ public class ImpaleSpell : MonoBehaviour
                 Destroy(fx, 1);
 
                 //You can also call your damaging script here
+                PlayerStats healthComponent = col.GetComponent<PlayerStats>();
+                healthComponent.characterCurrentHealth -= spellInfo.DamageAmount;   
             }
 
             IEnumerator EnemyStun()
             {
-                enemy.constraints = RigidbodyConstraints.FreezeAll;
-                enemy.constraints = ~RigidbodyConstraints.FreezePositionY;
+                enemy.isKinematic = true;
                 yield return new WaitForSeconds(2);
-                enemy.constraints = ~RigidbodyConstraints.FreezePosition;
+                enemy.isKinematic = false;
             }
         }
     }

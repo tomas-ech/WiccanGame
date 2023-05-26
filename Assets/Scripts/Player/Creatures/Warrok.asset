@@ -15,13 +15,14 @@ MonoBehaviour:
   Name: Warrok
   Description: Guardian del bosque
   Clan: Verde
+  spiritMagic: 1
   EarthMagic: 1
   WindMagic: 1
   WaterMagic: 0
   FireMagic: 0
   Speed: 250
-  Health: 3000
-  Mana: 800
+  Health: 500
+  Mana: 2000
   Strength: 100
   Agility: 100
   Intellect: 100

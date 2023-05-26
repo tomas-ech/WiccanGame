@@ -5,6 +5,7 @@ using System.Linq;
 
 public class FrostRainObj : MonoBehaviour
 {
+    public SpellScriptableObject spellInfo;
     public string[] tagsToCheck;
     public float impactRadius;
     public float destroyDelay;
@@ -18,6 +19,12 @@ public class FrostRainObj : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Enemy") || other.CompareTag("Dummy"))
+        {
+            PlayerStats healthComponent = other.GetComponent<PlayerStats>();
+            healthComponent.characterCurrentHealth -= spellInfo.DamageAmount;   
+        }
+
         if (tagsToCheck.Contains(other.tag))
         {
             Collider[] objectsInRange = Physics.OverlapSphere(transform.position, impactRadius);

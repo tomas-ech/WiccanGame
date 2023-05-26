@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class FireBallSpell : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class FireBallSpell : MonoBehaviour
 
     private SphereCollider myCollider;
     private Rigidbody myRB;
+    private GameObject impactFx;
+    public string[] tagsToCheck;
 
 
     void Awake()
@@ -26,12 +29,13 @@ public class FireBallSpell : MonoBehaviour
 
     private void Start()
     {
-        myRB.AddForce(Vector3.up * spellInfo.Speed * 4000 * Time.deltaTime, ForceMode.Impulse);
+        //myRB.AddForce(Vector3.up * spellInfo.Speed * 4000 * Time.deltaTime, ForceMode.Impulse);
+        impactFx = transform.Find("ImpactFx").gameObject;
     }
     private void FixedUpdate()
     {
      
-        myRB.AddForce(Physics.gravity * myRB.mass * 10);
+        //myRB.AddForce(Physics.gravity * myRB.mass * 10);
 
         if (spellInfo.Speed > 0)
         {
@@ -51,14 +55,42 @@ public class FireBallSpell : MonoBehaviour
         //Apply hit particle effects
         //Apply sound effects
 
-        if (other.CompareTag("Enemy") || other.CompareTag("Player"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Dummy"))
         {
             PlayerStats healthComponent = other.GetComponent<PlayerStats>();
-            healthComponent.characterCurrentHealth -= spellInfo.DamageAmount;   
-            Debug.Log("Golpeado con Fuego!");
+            healthComponent.characterCurrentHealth -= spellInfo.DamageAmount; 
+            
+            StartCoroutine(GettingHit(other));
         }
 
-        Destroy(this.gameObject);
+        if (tagsToCheck.Contains(other.tag))
+        {
+            Collider[] objectsInRange = Physics.OverlapSphere(transform.position, 1);
 
+            foreach(Collider col in objectsInRange)
+            {
+                Rigidbody enemy = col.GetComponent<Rigidbody>();
+
+                if (enemy != null)
+                {
+                    Destroy(gameObject);
+                }
+            }
+
+            impactFx.SetActive(true);
+            impactFx.transform.SetParent(null);
+            AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.explosionSound);
+            Destroy(impactFx, 0.5f);
+            Destroy(gameObject);
+        }
+
+    }
+
+    IEnumerator GettingHit(Collider other)
+    {
+        Animator animator = other.GetComponentInChildren<Animator>();
+        animator.SetBool("Hit", true);
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("Hit", false);
     }
 }

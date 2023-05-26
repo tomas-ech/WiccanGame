@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class FrostPunch : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class FrostPunch : MonoBehaviour
 
     private SphereCollider myCollider;
     private Rigidbody myRB;
+    private GameObject impactFx;
+    public string[] tagsToCheck;
 
 
     void Awake()
@@ -22,6 +25,11 @@ public class FrostPunch : MonoBehaviour
 
         Destroy(this.gameObject, spellInfo.Lifetime);
         
+    }
+
+    private void Start()
+    {
+        impactFx = transform.Find("ImpactFx").gameObject;
     }
 
     private void FixedUpdate()
@@ -45,14 +53,32 @@ public class FrostPunch : MonoBehaviour
         //Apply hit particle effects
         //Apply sound effects
 
-        if (other.CompareTag("Enemy") || other.CompareTag("Player"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Dummy"))
         {
             PlayerStats healthComponent = other.GetComponent<PlayerStats>();
             healthComponent.characterCurrentHealth -= spellInfo.DamageAmount;   
             Debug.Log("Golpeado con Hielo!");
         }
 
-        Destroy(this.gameObject);
+        if (tagsToCheck.Contains(other.tag))
+        {
+            Collider[] objectsInRange = Physics.OverlapSphere(transform.position, 1);
+
+            foreach(Collider col in objectsInRange)
+            {
+                Rigidbody enemy = col.GetComponent<Rigidbody>();
+
+                if (enemy != null)
+                {
+                    Destroy(gameObject);
+                }
+            }
+
+            impactFx.SetActive(true);
+            impactFx.transform.SetParent(null);
+            Destroy(impactFx, 0.5f);
+            Destroy(gameObject);
+        }
 
     }
 }
