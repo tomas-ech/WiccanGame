@@ -41,11 +41,14 @@ public class ButtonsScript : MonoBehaviour
 
     public void ExitGame()
     {
+        AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
         Application.Quit();
     }
 
     public void ReturnToMainScene()
     {
+        AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
+        AudioManager.Instance.audioManager.Stop();
         SceneManager.LoadScene(0);
     }
 

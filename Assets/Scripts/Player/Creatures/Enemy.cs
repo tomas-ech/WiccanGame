@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     [Header("Attacking")]
     public float timeBetweenAttacks;
     private bool alreadyAttacked;
+    public float attackOffset = 5f;
     public GameObject spell1;
 
     [Header("States")]
@@ -33,6 +34,7 @@ public class Enemy : MonoBehaviour
         playerStats = GetComponent<PlayerStats>();
         enemyAnimator = GetComponentInChildren<Animator>();
         initialPosition = transform.position;
+       
     }
 
     void Update()
@@ -46,16 +48,20 @@ public class Enemy : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
+        if(this.playerStats.characterCurrentHealth < 1 )
+        {
+            if (!AudioManager.Instance.audioManager.isPlaying){AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.enemyDeadSound);}
+        }
+
         if(playerStats.characterCurrentHealth > 1 && player.GetComponent<PlayerStats>().characterCurrentHealth > 1)
         {
-            if (!playerInSightRange && !playerInAttackRange) 
-            {
-                Patroling();               
-            }
-            if (playerInSightRange && !playerInAttackRange) {ChasePlayer();}
-            if (playerInSightRange && playerInAttackRange) {AttackPlayer();}
+            if (!playerInSightRange && !playerInAttackRange) {Patroling();}
+            else if (playerInSightRange && !playerInAttackRange) {ChasePlayer();}
+            else if (playerInSightRange && playerInAttackRange) {AttackPlayer(); enemyAnimator.SetBool("IsRunning", false);}
+            else {enemyAnimator.SetBool("IsRunning", false);}
+
         }
-        
+
         else if (playerStats.characterCurrentHealth > 1 && player.GetComponent<PlayerStats>().characterCurrentHealth < 1)
         {
             agent.SetDestination(initialPosition);
@@ -100,12 +106,13 @@ public class Enemy : MonoBehaviour
         //Que no se muevan al atacar
         agent.SetDestination(transform.position);
 
+        enemyAnimator.SetBool("IsRunning", false);
         transform.LookAt(player);
 
         if (!alreadyAttacked)
         {
-            enemyAnimator.SetBool("Attack1", true);
-            Instantiate(spell1, transform.position + transform.forward*5 + transform.up*2, this.transform.localRotation);
+            StartCoroutine(AttackAnimationReset());
+            Instantiate(spell1, transform.position + transform.forward * attackOffset + transform.up * 2, this.transform.localRotation);
             alreadyAttacked = true;
             Invoke("ResetAttack", timeBetweenAttacks);
         }
@@ -114,6 +121,13 @@ public class Enemy : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+    IEnumerator AttackAnimationReset()
+    {
+        enemyAnimator.SetBool("Attack1", true);
+        yield return new WaitForSeconds(0.7f);
         enemyAnimator.SetBool("Attack1", false);
+
     }
 }

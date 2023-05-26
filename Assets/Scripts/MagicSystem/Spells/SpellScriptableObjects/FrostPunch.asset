@@ -15,12 +15,13 @@ MonoBehaviour:
   Name: FrostPunch
   Description: Golpe elemental
   EarthMagic: 0
-  WindMagic: 1
-  WaterMagic: 0
   FireMagic: 0
-  DamageAmount: 30
+  SpiritMagic: 0
+  WaterMagic: 0
+  WindMagic: 1
+  DamageAmount: 100
   ManaCost: 20
-  Lifetime: 1.5
+  Lifetime: 0.5
   Speed: 15
   SpellRadius: 0.15
   SpellRange: 20

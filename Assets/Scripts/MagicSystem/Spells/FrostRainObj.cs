@@ -19,11 +19,10 @@ public class FrostRainObj : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy") || other.CompareTag("Player"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Dummy"))
         {
             PlayerStats healthComponent = other.GetComponent<PlayerStats>();
             healthComponent.characterCurrentHealth -= spellInfo.DamageAmount;   
-            Debug.Log("Golpeado con hielitos!");
         }
 
         if (tagsToCheck.Contains(other.tag))

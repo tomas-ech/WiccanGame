@@ -126,13 +126,13 @@ public class PlayerCastingMagic : MonoBehaviour
         AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.windPunch);
         Instantiate(spellToCast1, castPoint.position + new Vector3(-1f, 0f, 0f), groundPoint.rotation);
         yield return new WaitForSeconds(0.3f);
-        Instantiate(spellToCast1, castPoint.position + new Vector3(1.5f, 0f, 0f), groundPoint.rotation);
+        Instantiate(spellToCast1, castPoint.position + new Vector3(1f, 0f, 0f), groundPoint.rotation);
         AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.windPunch);
         yield return new WaitForSeconds(0.3f);
         Instantiate(spellToCast1, castPoint.position + new Vector3(-1f, 0f, 0f), castPointRotator.rotation);
         AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.windPunch);
         yield return new WaitForSeconds(0.3f);
-        Instantiate(spellToCast1, castPoint.position + new Vector3(1.5f, 0f, 0f), castPointRotator.rotation);
+        Instantiate(spellToCast1, castPoint.position + new Vector3(1f, 0f, 0f), castPointRotator.rotation);
         AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.windPunch);
 
     }
@@ -140,7 +140,7 @@ public class PlayerCastingMagic : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.blizzard);
-        Instantiate(spellToCast2, groundPoint.position + new Vector3(0f, 10f, 10f), castPointRotator.rotation);
+        Instantiate(spellToCast2, transform.position + new Vector3(0f, 10f, 0f), castPointRotator.localRotation);
     }
 
      IEnumerator Defensive1()

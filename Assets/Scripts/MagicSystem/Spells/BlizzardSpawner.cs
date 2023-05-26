@@ -5,6 +5,7 @@ using UnityEngine;
 public class BlizzardSpawner : MonoBehaviour
 {
     public GameObject flyingObject;
+    private GameObject player;
     public int amount;
     public float destroyDelay, spawnInterval, spawnRadius, spawnForce;
     public Vector3 spawnOffset;
@@ -12,8 +13,16 @@ public class BlizzardSpawner : MonoBehaviour
     private bool isDead = false;
     private float spawnIntervalTimer;
 
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player");
+        transform.rotation = player.transform.rotation;
+    }
+
     void Update()
     {
+        
+
         if (!isDead)
         {
             if (spawnIntervalTimer <= 0)
@@ -22,13 +31,13 @@ public class BlizzardSpawner : MonoBehaviour
 
                 amount -= 1;
 
-                var spawnPosition = transform.position + new Vector3(Random.insideUnitCircle.x * spawnRadius, Random.insideUnitCircle.y * spawnRadius) + spawnOffset;
+                var spawnPosition = transform.position + new Vector3(Random.insideUnitCircle.x * spawnRadius, 0, Random.insideUnitCircle.y * spawnRadius) + spawnOffset;
 
-                var obj = Instantiate(flyingObject, spawnPosition, Quaternion.identity);
+                var obj = Instantiate(flyingObject, spawnPosition, player.transform.rotation);
 
                 obj.transform.SetParent(transform);
 
-                var forceDirection = transform.position - (transform.position + spawnOffset);
+                var forceDirection = -transform.up;
 
                 obj.GetComponent<Rigidbody>().AddForce(forceDirection * spawnForce, ForceMode.VelocityChange);
 

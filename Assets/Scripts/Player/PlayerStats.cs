@@ -39,7 +39,7 @@ public class PlayerStats : MonoBehaviour
             playerIsDead = true;
             Animator animator = GetComponentInChildren<Animator>();
             animator.SetBool("Dead", true);
-            
+
             if(this.CompareTag("Enemy"))
             {
                 StartCoroutine(DestroyOnDead());
@@ -49,7 +49,7 @@ public class PlayerStats : MonoBehaviour
 
         if (healthRegen == true)
         {
-            characterCurrentHealth += 50 * Time.deltaTime;
+            characterCurrentHealth += 100 * Time.deltaTime;
         }
     }
 
@@ -100,7 +100,6 @@ public class PlayerStats : MonoBehaviour
         if (other.CompareTag("Spell"))
         {
             healthRegen = true;
-            Debug.Log("Curandose un tris");
         }
     }
 
@@ -109,7 +108,6 @@ public class PlayerStats : MonoBehaviour
         if (other.CompareTag("Spell"))
         {
             healthRegen = false;
-            Debug.Log("Ya no se cura, que pesar");
         }
     }
 }

@@ -36,7 +36,8 @@ public class PlayerController : MonoBehaviour
         characterName = playerStats.characterStats.Name;
         playerCastingMagic = GetComponent<PlayerCastingMagic>();
         rb3d = GetComponent<Rigidbody>();
-        
+
+        rb3d.isKinematic = false;
         rb3d.freezeRotation = true;
         readyToJump = true;
     }
@@ -150,6 +151,7 @@ public class PlayerController : MonoBehaviour
         {
             playerAnimator.SetBool("IsRunning", true);
             AudioManager.Instance.walkingSound.Play();
+            AudioManager.Instance.walkingSound.volume = 1;
         }
         else if (verticalInput < 0)
         {
@@ -182,7 +184,20 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(jumpKey)) {StartCoroutine(JumpAnimation());}
 
         //Muerte
-        //if (playerStats.characterCurrentHealth < 1) {playerAnimator.SetBool("Dead", true);}
+        if (playerStats.characterCurrentHealth < 1)
+        {
+            playerAnimator.SetBool("Dead", true);
+            AudioManager.Instance.canvasMusicSeasonMap.Stop();
+
+            if (!AudioManager.Instance.audioManager.isPlaying){AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.youLoseMusic);}
+        }
+
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length < 1)
+        {
+            AudioManager.Instance.canvasMusicSeasonMap.Stop();
+
+            if (!AudioManager.Instance.audioManager.isPlaying){AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.winMusic);}
+        }
        
     }
     private void PlayerAbilitiesAnimation()

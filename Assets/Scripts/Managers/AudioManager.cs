@@ -13,6 +13,9 @@ public class AudioManager : MonoBehaviour
     [Header("UISoundFX")]
     public AudioClip buttonSound;
     public AudioClip seasonMapMusic;
+    public AudioClip youLoseMusic;
+    public AudioClip warMusic;
+    public AudioClip winMusic;
 
     [Header("GameSoundFX")]
     public AudioClip throwFire;
@@ -21,7 +24,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip windPunch;
     public AudioClip blizzard;
     public AudioClip frostShardImpact;
-    //public AudioClip
+    public AudioClip enemyDeadSound;
     //public AudioClip
 
     public static AudioManager Instance {get; private set;}
@@ -39,9 +42,9 @@ public class AudioManager : MonoBehaviour
         }
     }   
 
-    void Start()
+    void Update()
     {
-
+        canvasMusic = GameObject.Find("Canvas").GetComponent<AudioSource>();
     }
 
 }

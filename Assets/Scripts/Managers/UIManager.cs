@@ -170,13 +170,13 @@ public class UIManager : MonoBehaviour
 
     IEnumerator PlayerDead()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene(1);
     }
 
     IEnumerator PlayerWin()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene(2);
     }
 }

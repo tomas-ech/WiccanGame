@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31f98f9c6f59f7241bccef7b4324a629, type: 3}
+  m_Name: WispSpell
+  m_EditorClassIdentifier: 
+  Name: Will o Wisp
+  Description: Magnetic light
+  EarthMagic: 0
+  FireMagic: 0
+  SpiritMagic: 1
+  WaterMagic: 0
+  WindMagic: 0
+  DamageAmount: 2
+  ManaCost: 200
+  Lifetime: 500
+  Speed: 0
+  SpellRadius: 15
+  SpellRange: 0
