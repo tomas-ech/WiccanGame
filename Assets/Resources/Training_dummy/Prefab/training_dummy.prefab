@@ -258,8 +258,8 @@ GameObject:
   - component: {fileID: 5360683131785772904}
   - component: {fileID: 5615497917579445399}
   - component: {fileID: 8955427318288232681}
-  - component: {fileID: 6472522322520879744}
   - component: {fileID: 5078847678020777958}
+  - component: {fileID: 7142649762937810163}
   m_Layer: 0
   m_Name: training_dummy
   m_TagString: Enemy
@@ -322,19 +322,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &6472522322520879744
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4697017240656324050}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.8633217, y: 1.8911374, z: 0.5370191}
-  m_Center: {x: 0.024111481, y: 0.9578761, z: 0.06209302}
 --- !u!114 &5078847678020777958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,6 +344,19 @@ MonoBehaviour:
   timeToRechargeMana: 5
   currentManaRechargeTimer: 0
   playerIsDead: 0
+--- !u!65 &7142649762937810163
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4697017240656324050}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1194657, y: 2.1891196, z: 0.44065928}
+  m_Center: {x: 0.02558279, y: 1.109456, z: 0.046940416}
 --- !u!1 &6774080502169825540
 GameObject:
   m_ObjectHideFlags: 0

@@ -53,7 +53,7 @@ public class FrostPunch : MonoBehaviour
         //Apply hit particle effects
         //Apply sound effects
 
-        if (other.CompareTag("Enemy") || other.CompareTag("Player"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Dummy"))
         {
             PlayerStats healthComponent = other.GetComponent<PlayerStats>();
             healthComponent.characterCurrentHealth -= spellInfo.DamageAmount;   

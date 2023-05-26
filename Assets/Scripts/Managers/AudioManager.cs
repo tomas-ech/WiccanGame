@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip blizzard;
     public AudioClip frostShardImpact;
     public AudioClip enemyDeadSound;
-    //public AudioClip
+    public AudioClip radiationWisp;
 
     public static AudioManager Instance {get; private set;}
 

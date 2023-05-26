@@ -101,7 +101,6 @@ public class ImpaleSpell : MonoBehaviour
                 //You can also call your damaging script here
                 PlayerStats healthComponent = col.GetComponent<PlayerStats>();
                 healthComponent.characterCurrentHealth -= spellInfo.DamageAmount;   
-                Debug.Log("Golpeado con rocaas!");
             }
 
             IEnumerator EnemyStun()

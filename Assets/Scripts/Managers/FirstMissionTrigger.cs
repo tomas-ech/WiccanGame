@@ -22,10 +22,11 @@ public class FirstMissionTrigger : MonoBehaviour
         {
             uiManager.StopAllCoroutines();
             uiManager.StartCoroutine("Mission1");
+            uiManager.remainingEnemies.SetActive(true);
             AudioManager.Instance.canvasMusicSeasonMap.Stop();
             AudioManager.Instance.canvasMusicSeasonMap.PlayOneShot(AudioManager.Instance.warMusic);
             AudioManager.Instance.canvasMusicSeasonMap.loop = true;
-            AudioManager.Instance.canvasMusicSeasonMap.volume = 0.3f;
+            AudioManager.Instance.canvasMusicSeasonMap.volume = 0.1f;
         }
     }
 

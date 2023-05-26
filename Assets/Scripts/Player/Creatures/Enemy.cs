@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public NavMeshAgent agent;
     public LayerMask whatIsGround, whatIsPlayer;
     private PlayerStats playerStats;
+    private Collider enemyCollider;
 
     [Header("Patroling")]
     private Vector3 initialPosition;
@@ -34,7 +35,7 @@ public class Enemy : MonoBehaviour
         playerStats = GetComponent<PlayerStats>();
         enemyAnimator = GetComponentInChildren<Animator>();
         initialPosition = transform.position;
-       
+        enemyCollider = GetComponent<CapsuleCollider>();
     }
 
     void Update()
@@ -51,6 +52,8 @@ public class Enemy : MonoBehaviour
         if(this.playerStats.characterCurrentHealth < 1 )
         {
             if (!AudioManager.Instance.audioManager.isPlaying){AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.enemyDeadSound);}
+
+            enemyCollider.enabled = false;
         }
 
         if(playerStats.characterCurrentHealth > 1 && player.GetComponent<PlayerStats>().characterCurrentHealth > 1)

@@ -245,12 +245,12 @@ NavMeshObstacle:
   m_GameObject: {fileID: 26922023290436720}
   m_Enabled: 1
   serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 2.917, y: 7.1940002, z: 4.184}
+  m_Shape: 0
+  m_Extents: {x: 1, y: 7.1940002, z: 1}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0.075, y: 7.1940002, z: 0.545}
+  m_Center: {x: 0, y: 7.1940002, z: 0}
   m_TimeToStationary: 0.5
 --- !u!1 &148139991578806019
 GameObject:
@@ -865,11 +865,11 @@ MonoBehaviour:
     m_Bits: 256
   walkpoint: {x: 0, y: 0, z: 0}
   walkPointRange: 10
-  timeBetweenAttacks: 6
+  timeBetweenAttacks: 3
   attackOffset: 5
-  spell1: {fileID: 3150382708309061463, guid: 55b0e009075cc9944b4462c8d6a95de4, type: 3}
-  sightRange: 20
-  attackRange: 10
+  spell1: {fileID: 1229109557672444813, guid: dfe324b3d41926947a610cfbb9b0d390, type: 3}
+  sightRange: 30
+  attackRange: 20
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!1 &295612214184790108
@@ -15542,7 +15542,7 @@ MonoBehaviour:
   walkPointRange: 10
   timeBetweenAttacks: 3
   attackOffset: 5
-  spell1: {fileID: 1229109557672444813, guid: 6d322a7b3b3f2434db02c4450b2a9adf, type: 3}
+  spell1: {fileID: 1229109557672444813, guid: e1d3a659e0b44aa458f6d9341f91c713, type: 3}
   sightRange: 30
   attackRange: 20
   playerInSightRange: 0
@@ -15913,7 +15913,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 5
   m_BaseOffset: 2
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!114 &3709799296411154609
 MonoBehaviour:
@@ -15935,12 +15935,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   walkpoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 10
+  walkPointRange: 0
   timeBetweenAttacks: 12
   attackOffset: 15
   spell1: {fileID: 6915952493964395469, guid: dca731183d5c1e44fba342521cf01020, type: 3}
-  sightRange: 30
-  attackRange: 25
+  sightRange: 50
+  attackRange: 30
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!1 &5368289684612463544
@@ -16159,7 +16159,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5475204523325476074}
   m_LocalRotation: {x: -0, y: 0.9527878, z: -0, w: 0.30363703}
-  m_LocalPosition: {x: 65.8, y: 119.89, z: -53.5}
+  m_LocalPosition: {x: 97.31, y: 119.89, z: -9.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16240,7 +16240,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 5
   m_BaseOffset: 2
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!114 &5155815575345871161
 MonoBehaviour:
@@ -16266,8 +16266,8 @@ MonoBehaviour:
   timeBetweenAttacks: 10
   attackOffset: 5
   spell1: {fileID: 7746844136361335213, guid: 20d10adb3e8e7f54bb71e66dfd2d2fd5, type: 3}
-  sightRange: 40
-  attackRange: 25
+  sightRange: 70
+  attackRange: 40
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!1 &5908979224232106998
@@ -16380,7 +16380,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 5
   m_BaseOffset: 2
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!114 &8869412476283802196
 MonoBehaviour:
@@ -16402,12 +16402,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   walkpoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 10
+  walkPointRange: 0
   timeBetweenAttacks: 10
   attackOffset: 5
   spell1: {fileID: 7746844136361335213, guid: 20d10adb3e8e7f54bb71e66dfd2d2fd5, type: 3}
   sightRange: 40
-  attackRange: 25
+  attackRange: 30
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!1 &5915714124949721769
@@ -16827,7 +16827,7 @@ MonoBehaviour:
   walkPointRange: 10
   timeBetweenAttacks: 5
   attackOffset: 5
-  spell1: {fileID: 1229109557672444813, guid: 6d322a7b3b3f2434db02c4450b2a9adf, type: 3}
+  spell1: {fileID: 1229109557672444813, guid: e1d3a659e0b44aa458f6d9341f91c713, type: 3}
   sightRange: 30
   attackRange: 20
   playerInSightRange: 0
@@ -17637,7 +17637,7 @@ MonoBehaviour:
   walkPointRange: 10
   timeBetweenAttacks: 4.5
   attackOffset: 5
-  spell1: {fileID: 1229109557672444813, guid: 6d322a7b3b3f2434db02c4450b2a9adf, type: 3}
+  spell1: {fileID: 1229109557672444813, guid: e1d3a659e0b44aa458f6d9341f91c713, type: 3}
   sightRange: 30
   attackRange: 20
   playerInSightRange: 0
@@ -19542,7 +19542,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7522828900003467245}
   m_LocalRotation: {x: -0, y: -0.9173993, z: -0, w: 0.39796808}
-  m_LocalPosition: {x: 89.5, y: 118.97, z: -38.9}
+  m_LocalPosition: {x: 91.3, y: 118.97, z: -32.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19648,8 +19648,8 @@ MonoBehaviour:
   walkPointRange: 10
   timeBetweenAttacks: 4
   attackOffset: 5
-  spell1: {fileID: 1229109557672444813, guid: 6d322a7b3b3f2434db02c4450b2a9adf, type: 3}
-  sightRange: 30
+  spell1: {fileID: 1229109557672444813, guid: dfe324b3d41926947a610cfbb9b0d390, type: 3}
+  sightRange: 50
   attackRange: 20
   playerInSightRange: 0
   playerInAttackRange: 0
@@ -23429,7 +23429,7 @@ PrefabInstance:
     - target: {fileID: 4697017240656324050, guid: 0331b169005eb1d469455efaa6b9024a,
         type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Dummy
       objectReference: {fileID: 0}
     - target: {fileID: 5360683131785772904, guid: 0331b169005eb1d469455efaa6b9024a,
         type: 3}
@@ -23566,7 +23566,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: d1b130d9c6eb3b244b6e38ead6695420,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d1b130d9c6eb3b244b6e38ead6695420,
         type: 3}
@@ -23642,6 +23642,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: training_dummy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4697017240656324050, guid: 0331b169005eb1d469455efaa6b9024a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Dummy
       objectReference: {fileID: 0}
     - target: {fileID: 5360683131785772904, guid: 0331b169005eb1d469455efaa6b9024a,
         type: 3}
@@ -23726,7 +23731,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: d1b130d9c6eb3b244b6e38ead6695420,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.8
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d1b130d9c6eb3b244b6e38ead6695420,
         type: 3}
@@ -23806,7 +23811,7 @@ PrefabInstance:
     - target: {fileID: 4697017240656324050, guid: 0331b169005eb1d469455efaa6b9024a,
         type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Dummy
       objectReference: {fileID: 0}
     - target: {fileID: 5360683131785772904, guid: 0331b169005eb1d469455efaa6b9024a,
         type: 3}
@@ -23917,41 +23922,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &5408592227187340970
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431322961311189686}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.7856879, y: 1.493737, z: 0.44065928}
-  m_Center: {x: 0.06434578, y: 0.76176465, z: 0.046940427}
---- !u!114 &6669976313853528493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1431322961311189686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a3496af8e2b58343b3537251d526035, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterStats: {fileID: 11400000, guid: b4726548e322b05498ae6debea5a3e0a, type: 2}
-  characterMaxHealth: 0
-  characterCurrentHealth: 0
-  characterMaxMana: 0
-  characterCurrentMana: 0
-  characterManaRecharge: 0
-  characterSpeed: 0
-  timeToRechargeMana: 5
-  currentManaRechargeTimer: 0
-  playerIsDead: 0
 --- !u!4 &1771819053889884172 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5360683131785772904, guid: 0331b169005eb1d469455efaa6b9024a,

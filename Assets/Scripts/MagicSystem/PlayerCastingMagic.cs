@@ -13,9 +13,9 @@ public class PlayerCastingMagic : MonoBehaviour
     [SerializeField] private Transform castPoint;
     [SerializeField] private Transform groundPoint;
     [SerializeField] private Transform castPointRotator;
-    [HideInInspector] public float attack1CD = 1f;
-    [HideInInspector] public float attack2CD = 6f;
-    [HideInInspector] public float attack3CD = 10f;
+    public float attack1CD = 1f;
+    public float attack2CD = 6f;
+    public float attack3CD = 10f;
     [HideInInspector] public float currentCastTimer1;
     [HideInInspector] public float currentCastTimer2;
     [HideInInspector] public float currentCastTimer3;
@@ -146,7 +146,6 @@ public class PlayerCastingMagic : MonoBehaviour
      IEnumerator Defensive1()
     {
         yield return new WaitForSeconds(0.1f);
-        AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.rockAttack);
         Instantiate(spellToCast3, groundPoint.parent.parent.transform.position, castPointRotator.rotation);
     }
 }

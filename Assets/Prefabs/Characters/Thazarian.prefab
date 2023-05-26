@@ -652,8 +652,8 @@ MonoBehaviour:
   groundPoint: {fileID: 6078839909861780635}
   castPointRotator: {fileID: 6078839910278465393}
   attack1CD: 1
-  attack2CD: 6
-  attack3CD: 10
+  attack2CD: 10
+  attack3CD: 12
   currentCastTimer1: 0
   currentCastTimer2: 0
   currentCastTimer3: 0

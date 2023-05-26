@@ -91,7 +91,7 @@ public class PlayerStats : MonoBehaviour
 
     IEnumerator DestroyOnDead()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2f);
         Destroy(gameObject);
     }
 

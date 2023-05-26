@@ -21,7 +21,7 @@ MonoBehaviour:
   WindMagic: 0
   DamageAmount: 0
   ManaCost: 200
-  Lifetime: 2.4
+  Lifetime: 4
   Speed: 0
   SpellRadius: 3
   SpellRange: 0

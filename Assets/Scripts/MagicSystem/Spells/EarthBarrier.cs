@@ -5,20 +5,21 @@ using UnityEngine;
 public class EarthBarrier : MonoBehaviour
 {
     public SpellScriptableObject spellInfo;
+    private Transform playerPosition;
 
-    void Awake()
+    private void Awake()
     {
         Destroy(this.gameObject, spellInfo.Lifetime);
     }
 
-    void Start()
+    private void Start()
     {
-        
-        
+        playerPosition = GameObject.FindWithTag("Player").transform;
     }
 
-    void Update()
+    private void Update()
     {
-        
+        transform.position = playerPosition.position;
     }
+
 }

@@ -9730,7 +9730,6 @@ MonoBehaviour:
   spellInfo: {fileID: 11400000, guid: 7ede98fc16fd53d45992ca2f22127634, type: 2}
   tagsToCheck:
   - Ground
-  - Player
   - Nature
   - Enemy
   impactRadius: 1

@@ -186,6 +186,7 @@ public class PlayerController : MonoBehaviour
         //Muerte
         if (playerStats.characterCurrentHealth < 1)
         {
+            rb3d.isKinematic = true;
             playerAnimator.SetBool("Dead", true);
             AudioManager.Instance.canvasMusicSeasonMap.Stop();
 
@@ -194,6 +195,7 @@ public class PlayerController : MonoBehaviour
 
         if (GameObject.FindGameObjectsWithTag("Enemy").Length < 1)
         {
+            rb3d.isKinematic = true;
             AudioManager.Instance.canvasMusicSeasonMap.Stop();
 
             if (!AudioManager.Instance.audioManager.isPlaying){AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.winMusic);}
@@ -271,9 +273,10 @@ public class PlayerController : MonoBehaviour
     {
         rb3d.isKinematic = true;
         playerAnimator.SetBool("IsBlocking", true);
-        yield return new WaitForSeconds(2);
-        playerAnimator.SetBool("IsBlocking", false);
+        yield return new WaitForSeconds(0.5f);
         rb3d.isKinematic = false;
+        playerAnimator.SetBool("IsBlocking", false);
+        
     }
 
 }

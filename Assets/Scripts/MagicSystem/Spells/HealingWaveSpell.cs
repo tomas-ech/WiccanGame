@@ -7,7 +7,7 @@ public class HealingWaveSpell : MonoBehaviour
 {
     public int bounces;
     public float healing, moveSpeed, rotSpeed, stopDistance, destroytimer;
-    public string tagsToCheck;
+    public string[] tagsToCheck;
 
     private Transform target, loopTransform;
     private ParticleSystem impact, loop;
@@ -65,10 +65,22 @@ public class HealingWaveSpell : MonoBehaviour
 
     private void Heal()
     {
-        target.GetComponent<PlayerStats>().characterCurrentHealth += healing;
-        healedTargets.Add(target);
-        possibleTargets.Remove(target);
-        impact.Play();
+
+        if (target.CompareTag("Enemy"))
+        {
+            target.GetComponent<PlayerStats>().characterCurrentHealth += healing;
+            healedTargets.Add(target);
+            possibleTargets.Remove(target);
+            impact.Play();
+        }
+
+        if (target.CompareTag("Player"))
+        {
+            target.GetComponent<PlayerStats>().characterCurrentHealth -= healing;
+            healedTargets.Add(target);
+            possibleTargets.Remove(target);
+            impact.Play();
+        }
 
         if (possibleTargets.Count > 0)
         {
@@ -90,7 +102,7 @@ public class HealingWaveSpell : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == tagsToCheck && !possibleTargets.Contains(other.transform) && target != other.transform && !isDead && !healedTargets.Contains(other.transform))
+        if (tagsToCheck.Contains(other.tag) && !possibleTargets.Contains(other.transform) && target != other.transform && !isDead && !healedTargets.Contains(other.transform))
         {
             possibleTargets.Add(other.transform);
         }
@@ -98,7 +110,7 @@ public class HealingWaveSpell : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == tagsToCheck && !isDead)
+        if (tagsToCheck.Contains(other.tag) && !isDead)
         {
             possibleTargets.Remove(other.transform);
         }

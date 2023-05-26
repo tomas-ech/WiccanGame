@@ -26,12 +26,14 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI manaText;
     public TextMeshProUGUI namePlayer;
     public TextMeshProUGUI namePlayerShadow;
+    public TextMeshProUGUI enemyCountText;
     public GameObject moveInstructions;
     public GameObject attack1Tutorial;
     public GameObject attack2Tutorial;
     public GameObject defenseTutorial;
     public GameObject mission1;
     public GameObject tip1;
+    public GameObject remainingEnemies;
     private int enemyCount;
 
 
@@ -51,6 +53,8 @@ public class UIManager : MonoBehaviour
         }
 
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+
+        enemyCountText.text = "Remaining Enemies: " + enemyCount.ToString();
 
         AbilitiesIcon();
         UpdateCoolDown();

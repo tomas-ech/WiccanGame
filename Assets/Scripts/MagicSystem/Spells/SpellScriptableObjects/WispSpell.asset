@@ -22,6 +22,6 @@ MonoBehaviour:
   DamageAmount: 2
   ManaCost: 200
   Lifetime: 500
-  Speed: 0
+  Speed: 20
   SpellRadius: 15
   SpellRange: 0
