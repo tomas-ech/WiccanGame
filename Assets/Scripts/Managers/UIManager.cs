@@ -54,7 +54,7 @@ public class UIManager : MonoBehaviour
 
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
 
-        enemyCountText.text = "Remaining Enemies: " + enemyCount.ToString();
+        enemyCountText.text = enemyCount.ToString();
 
         AbilitiesIcon();
         UpdateCoolDown();
@@ -145,16 +145,16 @@ public class UIManager : MonoBehaviour
         attack1Tutorial.SetActive(false);
         attack2Tutorial.SetActive(false);
         defenseTutorial.SetActive(false);
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(5);
         moveInstructions.SetActive(false);
         attack1Tutorial.SetActive(true);
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(5);
         attack1Tutorial.SetActive(false);
         attack2Tutorial.SetActive(true);
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(5);
         attack2Tutorial.SetActive(false);
         defenseTutorial.SetActive(true);
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(5);
         defenseTutorial.SetActive(false);
     }
 
