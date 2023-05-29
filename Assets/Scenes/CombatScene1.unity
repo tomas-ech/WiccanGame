@@ -4759,7 +4759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d913f7ea85701147ac0a2e7c7ff781a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimapCameraOffset: 50
+  minimapCameraOffset: 100
 --- !u!114 &665922603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4824,7 +4824,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 631
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: cf691d475bac2b548a3093059b534da6, type: 2}
   m_TargetDisplay: 0

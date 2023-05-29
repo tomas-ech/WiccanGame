@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -3354785978657682928}
   - component: {fileID: 2923754350745856582}
   - component: {fileID: 530438045225652497}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SpiritBarrier
   m_TagString: Nature
   m_Icon: {fileID: 0}

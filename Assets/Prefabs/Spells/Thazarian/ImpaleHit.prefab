@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9017148487559076529}
   - component: {fileID: 9017148487559076528}
   - component: {fileID: 9017148487559076535}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ImpaleHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}

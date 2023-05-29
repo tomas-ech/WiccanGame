@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8862450882448406999}
   - component: {fileID: 8862450882448406996}
   - component: {fileID: 5186091332392534910}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Blizzard
   m_TagString: Untagged
   m_Icon: {fileID: 0}

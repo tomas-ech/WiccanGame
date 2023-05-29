@@ -21,7 +21,7 @@ MonoBehaviour:
   WaterMagic: 0
   FireMagic: 0
   Speed: 225
-  Health: 500
+  Health: 800
   Mana: 800
   Strength: 200
   Agility: 500

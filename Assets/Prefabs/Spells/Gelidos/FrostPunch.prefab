@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6840624273293017716}
   - component: {fileID: -2367789339940352687}
   - component: {fileID: -5101120552690906264}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FrostPunch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,6 +55,7 @@ MonoBehaviour:
   - Player
   - Nature
   - Enemy
+  - Dummy
 --- !u!135 &-1909451142774025435
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4874,7 +4875,7 @@ GameObject:
   - component: {fileID: 7048305290838228660}
   - component: {fileID: 5447778595323762706}
   - component: {fileID: 3488289632480096983}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ImpactFx
   m_TagString: Untagged
   m_Icon: {fileID: 0}

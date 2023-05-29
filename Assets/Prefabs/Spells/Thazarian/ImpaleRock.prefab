@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3150382708309061459}
   - component: {fileID: 3150382708309061457}
   - component: {fileID: 3150382708309061462}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ImpaleRock
   m_TagString: Untagged
   m_Icon: {fileID: 0}

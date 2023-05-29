@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7746844136316202512}
   - component: {fileID: 7746844136316202514}
   - component: {fileID: 7746844136316202515}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Loop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4825,7 +4825,7 @@ GameObject:
   - component: {fileID: 7746844136361335215}
   - component: {fileID: 7746844136361335212}
   - component: {fileID: 6688560954338782813}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HealingWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4990,7 +4990,7 @@ GameObject:
   - component: {fileID: 7746844137755745939}
   - component: {fileID: 7746844137755745949}
   - component: {fileID: 7746844137755745938}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Impact
   m_TagString: Untagged
   m_Icon: {fileID: 0}

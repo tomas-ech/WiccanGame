@@ -52,21 +52,16 @@ public class UIManager : MonoBehaviour
             playerCastingMagic = GameObject.FindWithTag("Player").GetComponent<PlayerCastingMagic>();
         }
 
-        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        namePlayer.text = playerStats.characterStats.Name;
+        namePlayerShadow.text = playerStats.characterStats.Name;
 
+        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
         enemyCountText.text = enemyCount.ToString();
 
         AbilitiesIcon();
         UpdateCoolDown();
         WinLoseConditions();
-       
-        namePlayer.text = playerStats.characterStats.Name;
-        namePlayerShadow.text = playerStats.characterStats.Name;
-
-        //Barra de vida
         UpdateHealthbar(playerStats.characterMaxHealth, playerStats.characterCurrentHealth);
-
-        //Barra de mana
         UpdateManabar(playerStats.characterMaxMana, playerStats.characterCurrentMana);
     }
 
