@@ -83,7 +83,6 @@ public class FireBallSpell : MonoBehaviour
             Destroy(impactFx, 0.5f);
             Destroy(gameObject);
         }
-
     }
 
     IEnumerator GettingHit(Collider other)

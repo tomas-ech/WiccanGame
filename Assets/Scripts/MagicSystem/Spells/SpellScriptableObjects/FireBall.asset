@@ -19,7 +19,7 @@ MonoBehaviour:
   SpiritMagic: 0
   WaterMagic: 0
   WindMagic: 0
-  DamageAmount: 100
+  DamageAmount: 150
   ManaCost: 50
   Lifetime: 10
   Speed: 20

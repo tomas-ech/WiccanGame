@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 530438045225652497}
   m_Layer: 10
   m_Name: SpiritBarrier
-  m_TagString: Nature
+  m_TagString: DefensiveSpell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

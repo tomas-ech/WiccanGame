@@ -4920,6 +4920,7 @@ MonoBehaviour:
   - Ground
   - Player
   - Nature
+  - DefensiveSpell
 --- !u!1 &8157796378203053866
 GameObject:
   m_ObjectHideFlags: 0

@@ -9732,5 +9732,6 @@ MonoBehaviour:
   - Ground
   - Nature
   - Enemy
+  - DefensiveSpell
   impactRadius: 1
   destroyDelay: 0.5

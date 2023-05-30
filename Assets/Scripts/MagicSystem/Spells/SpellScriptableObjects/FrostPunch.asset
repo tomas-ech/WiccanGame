@@ -20,7 +20,7 @@ MonoBehaviour:
   WaterMagic: 0
   WindMagic: 1
   DamageAmount: 100
-  ManaCost: 20
+  ManaCost: 100
   Lifetime: 0.5
   Speed: 15
   SpellRadius: 0.15

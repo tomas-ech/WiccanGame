@@ -115,4 +115,6 @@ public class HealingWaveSpell : MonoBehaviour
             possibleTargets.Remove(other.transform);
         }
     }
+
+   
 }

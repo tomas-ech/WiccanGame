@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,6 +14,7 @@ public class ButtonsScript : MonoBehaviour
     public GameObject initialPage;
     public GameObject spawnObj;
     public GameObject menuPage;
+    public GameObject lorePage;
 
 
     private GameObject playerCamera;
@@ -37,6 +38,7 @@ public class ButtonsScript : MonoBehaviour
         AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
         initialPage.SetActive(true);
         tutorialSelectCharacter.SetActive(false);
+        lorePage.SetActive(false);
     }
 
     public void ExitGame()
@@ -50,6 +52,14 @@ public class ButtonsScript : MonoBehaviour
         AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
         AudioManager.Instance.audioManager.Stop();
         SceneManager.LoadScene(0);
+    }
+
+    public void LoreVideoPage()
+    {
+        AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
+        initialPage.SetActive(false);
+        tutorialSelectCharacter.SetActive(false);
+        lorePage.SetActive(true);
     }
 
 
