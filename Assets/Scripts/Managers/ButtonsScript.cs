@@ -25,13 +25,6 @@ public class ButtonsScript : MonoBehaviour
         spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
-    }
 
     public void ReturnToMainMenu()
     {
@@ -51,6 +44,8 @@ public class ButtonsScript : MonoBehaviour
     {
         AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
         AudioManager.Instance.audioManager.Stop();
+        AudioManager.Instance.canvasMusicSeasonMap.Stop();
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 

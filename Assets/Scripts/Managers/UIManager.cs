@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI namePlayer;
     public TextMeshProUGUI namePlayerShadow;
     public TextMeshProUGUI enemyCountText;
+    public GameObject pauseMenu;
     public GameObject moveInstructions;
     public GameObject attack1Tutorial;
     public GameObject attack2Tutorial;
@@ -34,6 +35,7 @@ public class UIManager : MonoBehaviour
     public GameObject mission1;
     public GameObject tip1;
     public GameObject remainingEnemies;
+    
     private int enemyCount;
 
 
@@ -58,6 +60,7 @@ public class UIManager : MonoBehaviour
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
         enemyCountText.text = enemyCount.ToString();
 
+        PauseGame();
         AbilitiesIcon();
         UpdateCoolDown();
         WinLoseConditions();
@@ -75,6 +78,27 @@ public class UIManager : MonoBehaviour
     {
         manaBar.fillAmount = mana / maxMana;
         manaText.text = (mana*100 / maxMana).ToString("F0") + "%"; 
+    }
+
+    private void PauseGame()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseMenu.SetActive(!pauseMenu.activeSelf);
+
+            if (Time.timeScale == 1 && Cursor.visible == false)
+            {
+                Time.timeScale = 0;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else
+            {
+                Time.timeScale = 1;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+        }
     }
 
     private void WinLoseConditions()
