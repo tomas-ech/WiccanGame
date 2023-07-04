@@ -82,7 +82,7 @@ public class WispSpell : MonoBehaviour
         {
             flickerDurationCounter -= Time.deltaTime;
             flickering = true;
-            if (!AudioManager.Instance.audioManager.isPlaying){AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.radiationWisp);}
+            AudioManager.Instance.PlaySFX(9);
 
             Collider[] enemiesInRange = Physics.OverlapSphere(transform.position, radius);
 

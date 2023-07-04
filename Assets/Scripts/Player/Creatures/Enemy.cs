@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
 
         if(this.playerStats.characterCurrentHealth < 1 )
         {
-            if (!AudioManager.Instance.audioManager.isPlaying){AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.enemyDeadSound);}
+            AudioManager.Instance.PlaySFX(2);
 
             enemyCollider.enabled = false;
         }

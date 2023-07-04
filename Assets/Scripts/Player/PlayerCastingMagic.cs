@@ -23,12 +23,14 @@ public class PlayerCastingMagic : MonoBehaviour
     [HideInInspector] public bool castingMagic2;
     [HideInInspector] public bool castingMagic3;
     private PlayerStats playerStats;
+    private PlayerController player;
     private string characterName;
 
 
     void Start()
     {
-        playerStats = GetComponent<PlayerStats>();   
+        playerStats = GetComponentInParent<PlayerStats>();  
+        player = GetComponentInParent<PlayerController>();
         characterName = playerStats.characterStats.Name;
     }
 
@@ -44,10 +46,8 @@ public class PlayerCastingMagic : MonoBehaviour
             currentCastTimer1 = 0;
             playerStats.characterCurrentMana -= spellInfo1.ManaCost;
             playerStats.currentManaRechargeTimer = 0;
-            
 
-            if(characterName == "Thazarian"){StartCoroutine(Thazarian1());}
-            if(characterName == "Gelidon"){StartCoroutine(Gelidon1());}
+
         }
 
         if (castingMagic1)
@@ -66,10 +66,7 @@ public class PlayerCastingMagic : MonoBehaviour
             currentCastTimer2 = 0;
 
             playerStats.characterCurrentMana -= spellInfo2.ManaCost;
-            playerStats.currentManaRechargeTimer = 0;
-            
-            if(characterName == "Thazarian"){StartCoroutine(Thazarian2());}
-            if(characterName == "Gelidon"){StartCoroutine(Gelidon2());}
+            playerStats.currentManaRechargeTimer = 0;  
         }
 
         if (castingMagic2)
@@ -89,9 +86,6 @@ public class PlayerCastingMagic : MonoBehaviour
 
             playerStats.characterCurrentMana -= spellInfo3.ManaCost;
             playerStats.currentManaRechargeTimer = 0;
-            
-            if(characterName == "Thazarian"){StartCoroutine(Defensive1());}
-            if(characterName == "Gelidon"){StartCoroutine(Defensive1());}
         }
         
         if (castingMagic3)
@@ -105,8 +99,16 @@ public class PlayerCastingMagic : MonoBehaviour
         }
     }
 
+    public void CastSpell1(int index)
+    {
+        Instantiate(spellToCast1, castPoint.position, castPointRotator.rotation);
+        AudioManager.Instance.PlaySFX(index);
+    }
 
-    IEnumerator Thazarian1()
+    
+
+
+    /*IEnumerator Thazarian1()
     {
         yield return new WaitForSeconds(0.5f);
         AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.throwFire);
@@ -147,5 +149,5 @@ public class PlayerCastingMagic : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         Instantiate(spellToCast3, groundPoint.parent.parent.transform.position, castPointRotator.rotation);
-    }
+    }*/
 }

@@ -81,7 +81,7 @@ public class EnemyProjectile : MonoBehaviour
 
             impactFx.SetActive(true);
             impactFx.transform.SetParent(null);
-            AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.explosionSound);
+            AudioManager.Instance.PlaySFX(4);
             Destroy(impactFx, 0.5f);
             Destroy(gameObject);
         }

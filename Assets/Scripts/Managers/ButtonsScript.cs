@@ -28,7 +28,7 @@ public class ButtonsScript : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
-        AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
+        AudioManager.Instance.PlaySFX(0);
         initialPage.SetActive(true);
         tutorialSelectCharacter.SetActive(false);
         lorePage.SetActive(false);
@@ -36,43 +36,25 @@ public class ButtonsScript : MonoBehaviour
 
     public void ExitGame()
     {
-        AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
+        AudioManager.Instance.PlaySFX(0);
         Application.Quit();
     }
 
     public void ReturnToMainScene()
     {
-        AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
-        AudioManager.Instance.audioManager.Stop();
-        AudioManager.Instance.canvasMusicSeasonMap.Stop();
+        AudioManager.Instance.PlayBGM(0);
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 
-    public void LoreVideoPage()
-    {
-        AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
-        initialPage.SetActive(false);
-        tutorialSelectCharacter.SetActive(false);
-        lorePage.SetActive(true);
-    }
-
-
     public void PlayTheGame()
     {
-        AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
+        AudioManager.Instance.PlaySFX(0);
         spawnManager.randomPlay = true;
         initialPage.SetActive(false);
         UiManager.SetActive(true);
         playerUI.SetActive(true);
         boardCamera.SetActive(false);
-    }
-
-    public void TutorialCharacter()
-    {
-        AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
-        initialPage.SetActive(false);
-        tutorialSelectCharacter.SetActive(true);
     }
 
     public void CharacterSelected1()
@@ -85,10 +67,8 @@ public class ButtonsScript : MonoBehaviour
         boardCamera.SetActive(false);
         tutorialTexts.SetActive(true);
 
-        AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
-        AudioManager.Instance.canvasMusic.Stop();
-        AudioManager.Instance.canvasMusicSeasonMap.Play();
-        AudioManager.Instance.canvasMusicSeasonMap.volume = 0.1f;
+        AudioManager.Instance.PlaySFX(0);
+        AudioManager.Instance.PlayBGM(1);
     }
 
     public void CharacterSelected2()
@@ -101,9 +81,7 @@ public class ButtonsScript : MonoBehaviour
         boardCamera.SetActive(false);
         tutorialTexts.SetActive(true);
 
-        AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.buttonSound);
-        AudioManager.Instance.canvasMusic.Stop();
-        AudioManager.Instance.canvasMusicSeasonMap.Play();
-        AudioManager.Instance.canvasMusicSeasonMap.volume = 0.1f;
+        AudioManager.Instance.PlaySFX(0);
+        AudioManager.Instance.PlayBGM(1);
     }
 }

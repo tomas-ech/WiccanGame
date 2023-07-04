@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         MyInput();
-        PlayerMovementAnimations();
+        //PlayerMovementAnimations();
         PlayerAbilitiesAnimation();
         SpeedControl();
     }
@@ -144,14 +144,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void PlayerMovementAnimations()
+    /*private void PlayerMovementAnimations()
     {
         //Movimiento verticales
         if (verticalInput > 0)
         {
             playerAnimator.SetBool("IsRunning", true);
-            AudioManager.Instance.walkingSound.Play();
-            AudioManager.Instance.walkingSound.volume = 1;
         }
         else if (verticalInput < 0)
         {
@@ -161,24 +159,20 @@ public class PlayerController : MonoBehaviour
         {
             playerAnimator.SetBool("IsRunning", false);
             playerAnimator.SetBool("WalkBack", false);
-            AudioManager.Instance.walkingSound.Stop();
         }
         //Movimientos horizontales
         if (horizontalInput > 0)
         {
             playerAnimator.SetBool("RightWalk", true);
-            AudioManager.Instance.walkingSound.Play();
         }
         else if (horizontalInput < 0)
         {
             playerAnimator.SetBool("LeftWalk", true);
-            AudioManager.Instance.walkingSound.Play();
         }
         else
         {
             playerAnimator.SetBool("RightWalk", false);
             playerAnimator.SetBool("LeftWalk", false);
-            AudioManager.Instance.walkingSound.Stop();
         }
         //Salto
         if (Input.GetKey(jumpKey)) {StartCoroutine(JumpAnimation());}
@@ -188,26 +182,22 @@ public class PlayerController : MonoBehaviour
         {
             rb3d.isKinematic = true;
             playerAnimator.SetBool("Dead", true);
-            AudioManager.Instance.canvasMusicSeasonMap.Stop();
-
-            if (!AudioManager.Instance.audioManager.isPlaying){AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.youLoseMusic);}
+            AudioManager.Instance.PlayBGM(4); //lose bgm 4
         }
 
         if (GameObject.FindGameObjectsWithTag("Enemy").Length < 1)
         {
             rb3d.isKinematic = true;
-            AudioManager.Instance.canvasMusicSeasonMap.Stop();
-
-            if (!AudioManager.Instance.audioManager.isPlaying){AudioManager.Instance.audioManager.PlayOneShot(AudioManager.Instance.winMusic);}
+            AudioManager.Instance.PlayBGM(3); //Win bgm 3
         }
        
-    }
+    }*/
     private void PlayerAbilitiesAnimation()
     {
         if (characterName == "Thazarian")
         {
             //Primary Attack
-            if (Input.GetMouseButtonDown(0) && !playerCastingMagic.castingMagic1){StartCoroutine(BombAttack());}
+            if (Input.GetMouseButtonDown(0) && !playerCastingMagic.castingMagic1){playerAnimator.SetBool("castSpell1", true);}
             //Secundary Attack
             if (Input.GetMouseButtonDown(1) && !playerCastingMagic.castingMagic2) {StartCoroutine(RockAttack());}
             //Defensive Spell
